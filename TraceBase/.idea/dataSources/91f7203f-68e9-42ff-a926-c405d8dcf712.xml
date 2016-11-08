@@ -1,0 +1,1923 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="Django default">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="2.6">
+    <database id="1" name="TraceBase">
+      <object-id>16393</object-id>
+      <visible>1</visible>
+    </database>
+    <schema id="2" parent="1" name="pg_catalog">
+      <object-id>11</object-id>
+      <introspection-state-number>494</introspection-state-number>
+      <introspection-timestamp>2016-11-08.15:52:35.680</introspection-timestamp>
+    </schema>
+    <schema id="3" parent="1" name="fibre">
+      <object-id>16402</object-id>
+      <visible>1</visible>
+      <introspection-state-number>777</introspection-state-number>
+      <introspection-timestamp>2016-11-08.15:54:54.627</introspection-timestamp>
+    </schema>
+    <schema id="4" parent="1" name="information_schema">
+      <object-id>12113</object-id>
+      <introspection-state-number>492</introspection-state-number>
+      <introspection-timestamp>2016-11-08.15:54:57.292</introspection-timestamp>
+    </schema>
+    <schema id="5" parent="1" name="item">
+      <object-id>16403</object-id>
+      <visible>1</visible>
+      <introspection-state-number>788</introspection-state-number>
+      <introspection-timestamp>2016-11-08.15:54:52.173</introspection-timestamp>
+    </schema>
+    <schema id="6" parent="1" name="lut">
+      <object-id>16404</object-id>
+      <visible>1</visible>
+      <introspection-state-number>790</introspection-state-number>
+      <introspection-timestamp>2016-11-08.15:54:46.348</introspection-timestamp>
+    </schema>
+    <schema id="7" parent="1" name="python">
+      <object-id>2200</object-id>
+      <visible>1</visible>
+      <introspection-state-number>848</introspection-state-number>
+      <introspection-timestamp>2016-11-08.15:54:38.186</introspection-timestamp>
+    </schema>
+    <schema id="8" parent="1" name="security">
+      <object-id>16405</object-id>
+      <visible>1</visible>
+      <introspection-state-number>791</introspection-state-number>
+      <introspection-timestamp>2016-11-08.15:54:49.319</introspection-timestamp>
+    </schema>
+    <schema id="9" parent="1" name="selection">
+      <object-id>16406</object-id>
+      <visible>1</visible>
+      <introspection-state-number>797</introspection-state-number>
+      <introspection-timestamp>2016-11-08.15:54:43.820</introspection-timestamp>
+    </schema>
+    <schema id="10" parent="1" name="textile">
+      <object-id>16407</object-id>
+      <visible>1</visible>
+      <introspection-state-number>808</introspection-state-number>
+      <introspection-timestamp>2016-11-08.15:54:41.126</introspection-timestamp>
+    </schema>
+    <schema id="11" parent="1" name="thread">
+      <object-id>16408</object-id>
+      <visible>1</visible>
+      <introspection-state-number>817</introspection-state-number>
+      <introspection-timestamp>2016-11-08.15:54:16.086</introspection-timestamp>
+    </schema>
+    <sequence id="12" parent="3" name="_msp_id_seq">
+      <object-id>16417</object-id>
+      <state-number>770</state-number>
+    </sequence>
+    <sequence id="13" parent="3" name="dye_analysis_id_seq">
+      <object-id>16425</object-id>
+      <state-number>773</state-number>
+    </sequence>
+    <sequence id="14" parent="3" name="fibre_id_seq">
+      <object-id>16437</object-id>
+      <state-number>777</state-number>
+    </sequence>
+    <table id="15" parent="3" name="_msp">
+      <object-id>16411</object-id>
+      <state-number>769</state-number>
+    </table>
+    <table id="16" parent="3" name="dye">
+      <object-id>16419</object-id>
+      <state-number>771</state-number>
+    </table>
+    <table id="17" parent="3" name="dye_analysis">
+      <object-id>16422</object-id>
+      <state-number>772</state-number>
+    </table>
+    <table id="18" parent="3" name="fibre">
+      <object-id>16427</object-id>
+      <state-number>774</state-number>
+    </table>
+    <view id="19" parent="3" name="fibre$">
+      <object-id>16433</object-id>
+      <state-number>776</state-number>
+    </view>
+    <sequence id="20" parent="5" name="history_id_seq">
+      <object-id>16452</object-id>
+      <state-number>782</state-number>
+    </sequence>
+    <sequence id="21" parent="5" name="item_id_seq">
+      <object-id>16470</object-id>
+      <state-number>788</state-number>
+    </sequence>
+    <table id="22" parent="5" name="action">
+      <object-id>16439</object-id>
+      <state-number>778</state-number>
+    </table>
+    <table id="23" parent="5" name="category">
+      <object-id>16442</object-id>
+      <state-number>779</state-number>
+    </table>
+    <table id="24" parent="5" name="history">
+      <object-id>16445</object-id>
+      <state-number>780</state-number>
+    </table>
+    <table id="25" parent="5" name="item">
+      <object-id>16454</object-id>
+      <state-number>783</state-number>
+    </table>
+    <table id="26" parent="5" name="population">
+      <object-id>16457</object-id>
+      <state-number>784</state-number>
+    </table>
+    <table id="27" parent="5" name="subcategory">
+      <object-id>16460</object-id>
+      <state-number>785</state-number>
+    </table>
+    <table id="28" parent="5" name="subsubcategory">
+      <object-id>16463</object-id>
+      <state-number>786</state-number>
+    </table>
+    <view id="29" parent="5" name="history$">
+      <object-id>16448</object-id>
+      <state-number>781</state-number>
+    </view>
+    <view id="30" parent="5" name="item$">
+      <object-id>16466</object-id>
+      <state-number>787</state-number>
+    </view>
+    <routine id="31" parent="5" name="global_row">
+      <object-id>16409</object-id>
+      <state-number>767</state-number>
+      <routine-kind>FUNCTION</routine-kind>
+    </routine>
+    <table id="32" parent="6" name="colour">
+      <object-id>16472</object-id>
+      <state-number>789</state-number>
+    </table>
+    <table id="33" parent="6" name="colour_intensity">
+      <object-id>16475</object-id>
+      <state-number>790</state-number>
+    </table>
+    <sequence id="34" parent="7" name="auth_group_id_seq">
+      <object-id>16891</object-id>
+      <state-number>830</state-number>
+    </sequence>
+    <sequence id="35" parent="7" name="auth_group_permissions_id_seq">
+      <object-id>16901</object-id>
+      <state-number>830</state-number>
+    </sequence>
+    <sequence id="36" parent="7" name="auth_permission_id_seq">
+      <object-id>16883</object-id>
+      <state-number>830</state-number>
+    </sequence>
+    <sequence id="37" parent="7" name="auth_user_groups_id_seq">
+      <object-id>16919</object-id>
+      <state-number>830</state-number>
+    </sequence>
+    <sequence id="38" parent="7" name="auth_user_id_seq">
+      <object-id>16909</object-id>
+      <state-number>830</state-number>
+    </sequence>
+    <sequence id="39" parent="7" name="auth_user_user_permissions_id_seq">
+      <object-id>16927</object-id>
+      <state-number>830</state-number>
+    </sequence>
+    <sequence id="40" parent="7" name="django_admin_log_id_seq">
+      <object-id>16987</object-id>
+      <state-number>832</state-number>
+    </sequence>
+    <sequence id="41" parent="7" name="django_content_type_id_seq">
+      <object-id>16873</object-id>
+      <state-number>828</state-number>
+    </sequence>
+    <sequence id="42" parent="7" name="django_migrations_id_seq">
+      <object-id>16862</object-id>
+      <state-number>827</state-number>
+    </sequence>
+    <table id="43" parent="7" name="auth_group">
+      <object-id>16893</object-id>
+      <state-number>830</state-number>
+    </table>
+    <table id="44" parent="7" name="auth_group_permissions">
+      <object-id>16903</object-id>
+      <state-number>830</state-number>
+    </table>
+    <table id="45" parent="7" name="auth_permission">
+      <object-id>16885</object-id>
+      <state-number>830</state-number>
+    </table>
+    <table id="46" parent="7" name="auth_user">
+      <object-id>16911</object-id>
+      <state-number>846</state-number>
+    </table>
+    <table id="47" parent="7" name="auth_user_groups">
+      <object-id>16921</object-id>
+      <state-number>830</state-number>
+    </table>
+    <table id="48" parent="7" name="auth_user_user_permissions">
+      <object-id>16929</object-id>
+      <state-number>830</state-number>
+    </table>
+    <table id="49" parent="7" name="django_admin_log">
+      <object-id>16989</object-id>
+      <state-number>832</state-number>
+    </table>
+    <table id="50" parent="7" name="django_content_type">
+      <object-id>16875</object-id>
+      <state-number>832</state-number>
+    </table>
+    <table id="51" parent="7" name="django_migrations">
+      <object-id>16864</object-id>
+      <state-number>827</state-number>
+    </table>
+    <table id="52" parent="7" name="django_session">
+      <object-id>17017</object-id>
+      <state-number>848</state-number>
+    </table>
+    <sequence id="53" parent="8" name="changehistory_id_seq">
+      <object-id>16487</object-id>
+      <state-number>586</state-number>
+    </sequence>
+    <table id="54" parent="8" name="changehistory">
+      <object-id>16478</object-id>
+      <state-number>791</state-number>
+    </table>
+    <routine id="55" parent="8" name="if_modified_func">
+      <object-id>16410</object-id>
+      <state-number>768</state-number>
+      <routine-kind>FUNCTION</routine-kind>
+    </routine>
+    <sequence id="56" parent="9" name="image_id_seq">
+      <object-id>16499</object-id>
+      <state-number>794</state-number>
+    </sequence>
+    <sequence id="57" parent="9" name="selection_id_seq">
+      <object-id>16508</object-id>
+      <state-number>797</state-number>
+    </sequence>
+    <table id="58" parent="9" name="image">
+      <object-id>16489</object-id>
+      <state-number>792</state-number>
+    </table>
+    <table id="59" parent="9" name="selection">
+      <object-id>16501</object-id>
+      <state-number>795</state-number>
+    </table>
+    <view id="60" parent="9" name="image$">
+      <object-id>16495</object-id>
+      <state-number>793</state-number>
+    </view>
+    <view id="61" parent="9" name="selection$">
+      <object-id>16504</object-id>
+      <state-number>796</state-number>
+    </view>
+    <sequence id="62" parent="10" name="colour_id_seq">
+      <object-id>16519</object-id>
+      <state-number>800</state-number>
+    </sequence>
+    <sequence id="63" parent="10" name="description_id_seq">
+      <object-id>16531</object-id>
+      <state-number>804</state-number>
+    </sequence>
+    <sequence id="64" parent="10" name="textile_id_seq">
+      <object-id>16544</object-id>
+      <state-number>808</state-number>
+    </sequence>
+    <table id="65" parent="10" name="category">
+      <object-id>16510</object-id>
+      <state-number>798</state-number>
+    </table>
+    <table id="66" parent="10" name="colour">
+      <object-id>16513</object-id>
+      <state-number>799</state-number>
+    </table>
+    <table id="67" parent="10" name="description">
+      <object-id>16521</object-id>
+      <state-number>801</state-number>
+    </table>
+    <table id="68" parent="10" name="origin">
+      <object-id>16533</object-id>
+      <state-number>805</state-number>
+    </table>
+    <table id="69" parent="10" name="pattern">
+      <object-id>16524</object-id>
+      <state-number>802</state-number>
+    </table>
+    <table id="70" parent="10" name="textile">
+      <object-id>16536</object-id>
+      <state-number>806</state-number>
+    </table>
+    <view id="71" parent="10" name="description$">
+      <object-id>16527</object-id>
+      <state-number>803</state-number>
+    </view>
+    <view id="72" parent="10" name="sample$">
+      <object-id>16540</object-id>
+      <state-number>807</state-number>
+    </view>
+    <sequence id="73" parent="11" name="microscopy_id_seq">
+      <object-id>16566</object-id>
+      <state-number>814</state-number>
+    </sequence>
+    <sequence id="74" parent="11" name="thread_id_seq">
+      <object-id>16578</object-id>
+      <state-number>817</state-number>
+    </sequence>
+    <table id="75" parent="11" name="application">
+      <object-id>16546</object-id>
+      <state-number>809</state-number>
+    </table>
+    <table id="76" parent="11" name="micdelust">
+      <object-id>16549</object-id>
+      <state-number>810</state-number>
+    </table>
+    <table id="77" parent="11" name="micid">
+      <object-id>16552</object-id>
+      <state-number>811</state-number>
+    </table>
+    <table id="78" parent="11" name="micpol">
+      <object-id>16555</object-id>
+      <state-number>812</state-number>
+    </table>
+    <table id="79" parent="11" name="microscopy">
+      <object-id>16430</object-id>
+      <state-number>775</state-number>
+    </table>
+    <table id="80" parent="11" name="number_of_fibres">
+      <object-id>16568</object-id>
+      <state-number>815</state-number>
+    </table>
+    <table id="81" parent="11" name="structure">
+      <object-id>16571</object-id>
+      <state-number>816</state-number>
+    </table>
+    <table id="82" parent="11" name="thread">
+      <object-id>16558</object-id>
+      <state-number>813</state-number>
+    </table>
+    <view id="83" parent="11" name="microscopy$">
+      <object-id>16561</object-id>
+      <state-number>615</state-number>
+    </view>
+    <view id="84" parent="11" name="thread$">
+      <object-id>16574</object-id>
+      <state-number>620</state-number>
+    </view>
+    <column id="85" parent="15" name="id">
+      <state-number>623</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;fibre._msp_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="86" parent="15" name="fibre">
+      <state-number>558</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="87" parent="15" name="spectrum">
+      <state-number>558</state-number>
+      <mandatory>1</mandatory>
+      <data-type>_float4(8,8)|2003</data-type>
+    </column>
+    <key id="88" parent="15" name="_msp_pkey">
+      <object-id>16594</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="89" parent="15" name="_msp_fibre_fkey">
+      <object-id>16666</object-id>
+      <columns>fibre</columns>
+      <ref-key>~.fibre.fibre_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="90" parent="16" name="id">
+      <state-number>561</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="91" parent="16" name="application">
+      <state-number>561</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|12</data-type>
+    </column>
+    <column id="92" parent="16" name="colour">
+      <state-number>561</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(20)|12</data-type>
+    </column>
+    <column id="93" parent="16" name="number">
+      <state-number>561</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="94" parent="16" name="ci_name_add">
+      <state-number>561</state-number>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <column id="95" parent="16" name="ci_number">
+      <state-number>561</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="96" parent="16" name="ci_number_add">
+      <state-number>561</state-number>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <column id="97" parent="16" name="cas">
+      <state-number>561</state-number>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <column id="98" parent="16" name="remark">
+      <state-number>561</state-number>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <key id="99" parent="16" name="dye_pkey">
+      <object-id>16598</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="100" parent="17" name="id">
+      <state-number>624</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;fibre.dye_analysis_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="101" parent="17" name="fibre">
+      <state-number>562</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="102" parent="17" name="dye">
+      <state-number>562</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="103" parent="17" name="quantity">
+      <state-number>562</state-number>
+      <data-type>float4(8,8)|7</data-type>
+    </column>
+    <key id="104" parent="17" name="dye_analysis_pkey">
+      <object-id>16596</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="105" parent="17" name="dye_analysis_fibre_fkey">
+      <object-id>16676</object-id>
+      <columns>fibre</columns>
+      <ref-key>~.fibre.fibre_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="106" parent="17" name="dye_analysis_dye_fkey">
+      <object-id>16671</object-id>
+      <columns>dye</columns>
+      <ref-key>~.dye.dye_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="107" parent="18" name="id">
+      <state-number>625</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;fibre.fibre_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="108" parent="18" name="thread_id">
+      <state-number>565</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="109" parent="18" name="fibre_type">
+      <state-number>565</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <key id="110" parent="18" name="fibre_pkey">
+      <object-id>16600</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="111" parent="18" name="fibre_thread_id_fkey">
+      <object-id>16686</object-id>
+      <columns>thread_id</columns>
+      <ref-key>~thread.thread.thread_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="112" parent="18" name="fibre_fibre_type_fkey">
+      <object-id>16681</object-id>
+      <columns>fibre_type</columns>
+      <ref-key>~thread.microscopy.microscopy_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="113" parent="19" name="id">
+      <state-number>567</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="114" parent="19" name="description">
+      <state-number>567</state-number>
+      <data-type>text(max)|12</data-type>
+    </column>
+    <column id="115" parent="22" name="id">
+      <state-number>570</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="116" parent="22" name="description">
+      <state-number>570</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <key id="117" parent="22" name="action_pkey">
+      <object-id>16602</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="118" parent="23" name="id">
+      <state-number>571</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="119" parent="23" name="description">
+      <state-number>571</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <key id="120" parent="23" name="category_pkey">
+      <object-id>16604</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="121" parent="24" name="id">
+      <state-number>626</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;item.history_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="122" parent="24" name="description">
+      <state-number>572</state-number>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="123" parent="24" name="action">
+      <state-number>572</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="124" parent="24" name="item">
+      <state-number>572</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="125" parent="24" name="party">
+      <state-number>572</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="126" parent="24" name="party_reference">
+      <state-number>572</state-number>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="127" parent="24" name="date">
+      <state-number>572</state-number>
+      <mandatory>1</mandatory>
+      <data-type>date(13)|91</data-type>
+    </column>
+    <key id="128" parent="24" name="history_pkey">
+      <object-id>16606</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="129" parent="24" name="history_action_fkey">
+      <object-id>16691</object-id>
+      <columns>action</columns>
+      <ref-key>~.action.action_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="130" parent="24" name="history_item_fkey">
+      <object-id>16696</object-id>
+      <columns>item</columns>
+      <ref-key>~.item.item_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="131" parent="25" name="id">
+      <state-number>627</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;item.item_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="132" parent="25" name="description">
+      <state-number>576</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="133" parent="25" name="category">
+      <state-number>576</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="134" parent="25" name="population">
+      <state-number>576</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <key id="135" parent="25" name="item_pkey">
+      <object-id>16608</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="136" parent="25" name="item_category_fkey">
+      <object-id>16701</object-id>
+      <columns>category</columns>
+      <ref-key>~.subsubcategory.subsubcategory_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="137" parent="25" name="item_population_fkey">
+      <object-id>16706</object-id>
+      <columns>population</columns>
+      <ref-key>~.population.population_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="138" parent="26" name="id">
+      <state-number>577</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="139" parent="26" name="description">
+      <state-number>577</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <key id="140" parent="26" name="population_pkey">
+      <object-id>16610</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="141" parent="27" name="id">
+      <state-number>578</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="142" parent="27" name="category">
+      <state-number>578</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="143" parent="27" name="description">
+      <state-number>578</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <key id="144" parent="27" name="subcategory_pkey">
+      <object-id>16612</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="145" parent="27" name="subcategory_category_fkey">
+      <object-id>16711</object-id>
+      <columns>category</columns>
+      <ref-key>~.category.category_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="146" parent="28" name="id">
+      <state-number>579</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="147" parent="28" name="category">
+      <state-number>579</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="148" parent="28" name="description">
+      <state-number>579</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <key id="149" parent="28" name="subsubcategory_pkey">
+      <object-id>16614</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="150" parent="28" name="subsubcategory_category_fkey">
+      <object-id>16716</object-id>
+      <columns>category</columns>
+      <ref-key>~.subcategory.subcategory_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="151" parent="29" name="id">
+      <state-number>573</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="152" parent="29" name="item">
+      <state-number>573</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="153" parent="29" name="description">
+      <state-number>573</state-number>
+      <data-type>text(max)|12</data-type>
+    </column>
+    <column id="154" parent="30" name="id">
+      <state-number>580</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="155" parent="30" name="description">
+      <state-number>580</state-number>
+      <data-type>text(max)|12</data-type>
+    </column>
+    <argument id="156" parent="31" name="returnValue">
+      <direction>RETURN</direction>
+      <data-type>trigger(0)|1111</data-type>
+    </argument>
+    <column id="157" parent="32" name="id">
+      <state-number>583</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="158" parent="32" name="description">
+      <state-number>583</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <key id="159" parent="32" name="colour_pkey">
+      <object-id>16618</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="160" parent="33" name="id">
+      <state-number>584</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="161" parent="33" name="description">
+      <state-number>584</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <key id="162" parent="33" name="colour_intensity_pkey">
+      <object-id>16616</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="163" parent="43" name="id">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;python.auth_group_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="164" parent="43" name="name">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(80)|12</data-type>
+    </column>
+    <key id="165" parent="43" name="auth_group_pkey">
+      <object-id>16898</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="166" parent="44" name="id">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;python.auth_group_permissions_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="167" parent="44" name="group_id">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="168" parent="44" name="permission_id">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <key id="169" parent="44" name="auth_group_permissions_pkey">
+      <object-id>16908</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="170" parent="44" name="auth_group_permissions_group_id_b120cbf9_fk_auth_group_id">
+      <object-id>16944</object-id>
+      <columns>group_id</columns>
+      <deferrable>1</deferrable>
+      <initially-deferred>1</initially-deferred>
+      <ref-key>~.auth_group.auth_group_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="171" parent="44" name="auth_group_permiss_permission_id_84c5c92e_fk_auth_permission_id">
+      <object-id>16949</object-id>
+      <columns>permission_id</columns>
+      <deferrable>1</deferrable>
+      <initially-deferred>1</initially-deferred>
+      <ref-key>~.auth_permission.auth_permission_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="172" parent="45" name="id">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;python.auth_permission_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="173" parent="45" name="name">
+      <state-number>837</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|12</data-type>
+    </column>
+    <column id="174" parent="45" name="content_type_id">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="175" parent="45" name="codename">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|12</data-type>
+    </column>
+    <key id="176" parent="45" name="auth_permission_pkey">
+      <object-id>16890</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="177" parent="45" name="auth_permiss_content_type_id_2f476e4b_fk_django_content_type_id">
+      <object-id>16935</object-id>
+      <columns>content_type_id</columns>
+      <deferrable>1</deferrable>
+      <initially-deferred>1</initially-deferred>
+      <ref-key>~.django_content_type.django_content_type_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="178" parent="46" name="id">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;python.auth_user_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="179" parent="46" name="password">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(128)|12</data-type>
+    </column>
+    <column id="180" parent="46" name="last_login">
+      <state-number>842</state-number>
+      <data-type>timestamptz(35,6)|93</data-type>
+    </column>
+    <column id="181" parent="46" name="is_superuser">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>bool(1)|-7</data-type>
+    </column>
+    <column id="182" parent="46" name="username">
+      <state-number>846</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(150)|12</data-type>
+    </column>
+    <column id="183" parent="46" name="first_name">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="184" parent="46" name="last_name">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="185" parent="46" name="email">
+      <state-number>839</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(254)|12</data-type>
+    </column>
+    <column id="186" parent="46" name="is_staff">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>bool(1)|-7</data-type>
+    </column>
+    <column id="187" parent="46" name="is_active">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>bool(1)|-7</data-type>
+    </column>
+    <column id="188" parent="46" name="date_joined">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>timestamptz(35,6)|93</data-type>
+    </column>
+    <key id="189" parent="46" name="auth_user_pkey">
+      <object-id>16916</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="190" parent="47" name="id">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;python.auth_user_groups_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="191" parent="47" name="user_id">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="192" parent="47" name="group_id">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <key id="193" parent="47" name="auth_user_groups_pkey">
+      <object-id>16926</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="194" parent="47" name="auth_user_groups_user_id_6a12ed8b_fk_auth_user_id">
+      <object-id>16959</object-id>
+      <columns>user_id</columns>
+      <deferrable>1</deferrable>
+      <initially-deferred>1</initially-deferred>
+      <ref-key>~.auth_user.auth_user_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="195" parent="47" name="auth_user_groups_group_id_97559544_fk_auth_group_id">
+      <object-id>16964</object-id>
+      <columns>group_id</columns>
+      <deferrable>1</deferrable>
+      <initially-deferred>1</initially-deferred>
+      <ref-key>~.auth_group.auth_group_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="196" parent="48" name="id">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;python.auth_user_user_permissions_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="197" parent="48" name="user_id">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="198" parent="48" name="permission_id">
+      <state-number>830</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <key id="199" parent="48" name="auth_user_user_permissions_pkey">
+      <object-id>16934</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="200" parent="48" name="auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id">
+      <object-id>16973</object-id>
+      <columns>user_id</columns>
+      <deferrable>1</deferrable>
+      <initially-deferred>1</initially-deferred>
+      <ref-key>~.auth_user.auth_user_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="201" parent="48" name="auth_user_user_per_permission_id_1fbb5f2c_fk_auth_permission_id">
+      <object-id>16978</object-id>
+      <columns>permission_id</columns>
+      <deferrable>1</deferrable>
+      <initially-deferred>1</initially-deferred>
+      <ref-key>~.auth_permission.auth_permission_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="202" parent="49" name="id">
+      <state-number>832</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;python.django_admin_log_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="203" parent="49" name="action_time">
+      <state-number>832</state-number>
+      <mandatory>1</mandatory>
+      <data-type>timestamptz(35,6)|93</data-type>
+    </column>
+    <column id="204" parent="49" name="object_id">
+      <state-number>832</state-number>
+      <data-type>text(max)|12</data-type>
+    </column>
+    <column id="205" parent="49" name="object_repr">
+      <state-number>832</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(200)|12</data-type>
+    </column>
+    <column id="206" parent="49" name="action_flag">
+      <state-number>832</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int2(5)|5</data-type>
+    </column>
+    <column id="207" parent="49" name="change_message">
+      <state-number>832</state-number>
+      <mandatory>1</mandatory>
+      <data-type>text(max)|12</data-type>
+    </column>
+    <column id="208" parent="49" name="content_type_id">
+      <state-number>832</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="209" parent="49" name="user_id">
+      <state-number>832</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <key id="210" parent="49" name="django_admin_log_pkey">
+      <object-id>16998</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="211" parent="49" name="django_admin_content_type_id_c4bce8eb_fk_django_content_type_id">
+      <object-id>16999</object-id>
+      <columns>content_type_id</columns>
+      <deferrable>1</deferrable>
+      <initially-deferred>1</initially-deferred>
+      <ref-key>~.django_content_type.django_content_type_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="212" parent="49" name="django_admin_log_user_id_c564eba6_fk_auth_user_id">
+      <object-id>17004</object-id>
+      <columns>user_id</columns>
+      <deferrable>1</deferrable>
+      <initially-deferred>1</initially-deferred>
+      <ref-key>~.auth_user.auth_user_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <check id="213" parent="49" name="django_admin_log_action_flag_check">
+      <object-id>16993</object-id>
+      <columns>action_flag</columns>
+      <predicate>action_flag &gt;= 0</predicate>
+    </check>
+    <column id="214" parent="50" name="id">
+      <state-number>828</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;python.django_content_type_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="215" parent="50" name="app_label">
+      <state-number>828</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|12</data-type>
+    </column>
+    <column id="216" parent="50" name="model">
+      <state-number>828</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|12</data-type>
+    </column>
+    <key id="217" parent="50" name="django_content_type_pkey">
+      <object-id>16880</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="218" parent="51" name="id">
+      <state-number>827</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;python.django_migrations_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="219" parent="51" name="app">
+      <state-number>827</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|12</data-type>
+    </column>
+    <column id="220" parent="51" name="name">
+      <state-number>827</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|12</data-type>
+    </column>
+    <column id="221" parent="51" name="applied">
+      <state-number>827</state-number>
+      <mandatory>1</mandatory>
+      <data-type>timestamptz(35,6)|93</data-type>
+    </column>
+    <key id="222" parent="51" name="django_migrations_pkey">
+      <object-id>16872</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="223" parent="52" name="session_key">
+      <state-number>848</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(40)|12</data-type>
+    </column>
+    <column id="224" parent="52" name="session_data">
+      <state-number>848</state-number>
+      <mandatory>1</mandatory>
+      <data-type>text(max)|12</data-type>
+    </column>
+    <column id="225" parent="52" name="expire_date">
+      <state-number>848</state-number>
+      <mandatory>1</mandatory>
+      <data-type>timestamptz(35,6)|93</data-type>
+    </column>
+    <key id="226" parent="52" name="django_session_pkey">
+      <object-id>17024</object-id>
+      <columns>session_key</columns>
+      <primary>1</primary>
+    </key>
+    <column id="227" parent="54" name="id">
+      <state-number>628</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;security.changehistory_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="228" parent="54" name="schema_name">
+      <state-number>585</state-number>
+      <mandatory>1</mandatory>
+      <data-type>text(max)|12</data-type>
+    </column>
+    <column id="229" parent="54" name="table_name">
+      <state-number>585</state-number>
+      <mandatory>1</mandatory>
+      <data-type>text(max)|12</data-type>
+    </column>
+    <column id="230" parent="54" name="currentuser">
+      <state-number>585</state-number>
+      <data-type>varchar(10)|12</data-type>
+      <default-expression>&quot;current_user&quot;()</default-expression>
+    </column>
+    <column id="231" parent="54" name="date">
+      <state-number>585</state-number>
+      <data-type>timestamptz(35,6)|93</data-type>
+      <default-expression>now()</default-expression>
+    </column>
+    <column id="232" parent="54" name="action">
+      <state-number>585</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <column id="233" parent="54" name="original_data">
+      <state-number>585</state-number>
+      <data-type>text(max)|12</data-type>
+    </column>
+    <column id="234" parent="54" name="new_data">
+      <state-number>585</state-number>
+      <data-type>text(max)|12</data-type>
+    </column>
+    <column id="235" parent="54" name="row_id">
+      <state-number>585</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="236" parent="54" name="query">
+      <state-number>585</state-number>
+      <data-type>text(max)|12</data-type>
+    </column>
+    <key id="237" parent="54" name="changehistory_pkey">
+      <object-id>16620</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <check id="238" parent="54" name="changehistory_action_check">
+      <object-id>16483</object-id>
+      <columns>action</columns>
+      <predicate>(action)::text = ANY (ARRAY[(&apos;I&apos;::character varying)::text, (&apos;D&apos;::character varying)::text, (&apos;U&apos;::character varying)::text])</predicate>
+    </check>
+    <argument id="239" parent="55" name="returnValue">
+      <direction>RETURN</direction>
+      <data-type>trigger(0)|1111</data-type>
+    </argument>
+    <column id="240" parent="58" name="id">
+      <state-number>629</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;selection.image_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="241" parent="58" name="selection">
+      <state-number>588</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="242" parent="58" name="description">
+      <state-number>588</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(40)|12</data-type>
+    </column>
+    <column id="243" parent="58" name="fullname">
+      <state-number>588</state-number>
+      <data-type>varchar(40)|12</data-type>
+    </column>
+    <column id="244" parent="58" name="name">
+      <state-number>588</state-number>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <column id="245" parent="58" name="img">
+      <state-number>588</state-number>
+      <mandatory>1</mandatory>
+      <data-type>bytea(max)|-2</data-type>
+    </column>
+    <key id="246" parent="58" name="image_pkey">
+      <object-id>16622</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="247" parent="58" name="image_selection_fkey">
+      <object-id>16721</object-id>
+      <columns>selection</columns>
+      <ref-key>~.selection.selection_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="248" parent="59" name="id">
+      <state-number>630</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;selection.selection_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="249" parent="59" name="description">
+      <state-number>592</state-number>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="250" parent="59" name="item">
+      <state-number>592</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <key id="251" parent="59" name="selection_pkey">
+      <object-id>16624</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="252" parent="59" name="selection_item_fkey">
+      <object-id>16726</object-id>
+      <columns>item</columns>
+      <ref-key>~item.item.item_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="253" parent="60" name="id">
+      <state-number>589</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="254" parent="60" name="selection">
+      <state-number>589</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="255" parent="60" name="description">
+      <state-number>589</state-number>
+      <data-type>text(max)|12</data-type>
+    </column>
+    <column id="256" parent="61" name="id">
+      <state-number>593</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="257" parent="61" name="item">
+      <state-number>593</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="258" parent="61" name="description">
+      <state-number>593</state-number>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="259" parent="65" name="id">
+      <state-number>596</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="260" parent="65" name="description">
+      <state-number>596</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="261" parent="65" name="title_descr1">
+      <state-number>596</state-number>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="262" parent="65" name="title_descr2">
+      <state-number>596</state-number>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="263" parent="65" name="title_num1">
+      <state-number>596</state-number>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="264" parent="65" name="title_num2">
+      <state-number>596</state-number>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="265" parent="65" name="title_bool1">
+      <state-number>596</state-number>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="266" parent="65" name="title_bool2">
+      <state-number>596</state-number>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <key id="267" parent="65" name="category_pkey">
+      <object-id>16626</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="268" parent="66" name="id">
+      <state-number>631</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;textile.colour_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="269" parent="66" name="description">
+      <state-number>597</state-number>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="270" parent="66" name="textile">
+      <state-number>597</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="271" parent="66" name="spectrum">
+      <state-number>597</state-number>
+      <mandatory>1</mandatory>
+      <data-type>_float4(8,8)|2003</data-type>
+    </column>
+    <key id="272" parent="66" name="colour_pkey">
+      <object-id>16628</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="273" parent="66" name="colour_textile_fkey">
+      <object-id>16731</object-id>
+      <columns>textile</columns>
+      <ref-key>~.textile.textile_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="274" parent="67" name="id">
+      <state-number>632</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;textile.description_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="275" parent="67" name="sample">
+      <state-number>600</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="276" parent="67" name="pattern">
+      <state-number>600</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="277" parent="67" name="description">
+      <state-number>600</state-number>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="278" parent="67" name="num1">
+      <state-number>600</state-number>
+      <data-type>float4(8,8)|7</data-type>
+    </column>
+    <column id="279" parent="67" name="num2">
+      <state-number>600</state-number>
+      <data-type>float4(8,8)|7</data-type>
+    </column>
+    <column id="280" parent="67" name="bool1">
+      <state-number>600</state-number>
+      <data-type>bool(1)|-7</data-type>
+    </column>
+    <column id="281" parent="67" name="bool2">
+      <state-number>600</state-number>
+      <data-type>bool(1)|-7</data-type>
+    </column>
+    <key id="282" parent="67" name="description_pkey">
+      <object-id>16630</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="283" parent="67" name="description_sample_fkey">
+      <object-id>16741</object-id>
+      <columns>sample</columns>
+      <ref-key>~.textile.textile_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="284" parent="67" name="description_pattern_fkey">
+      <object-id>16736</object-id>
+      <columns>pattern</columns>
+      <ref-key>~.pattern.pattern_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="285" parent="68" name="id">
+      <state-number>605</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="286" parent="68" name="description">
+      <state-number>605</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <key id="287" parent="68" name="origin_pkey">
+      <object-id>16632</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="288" parent="69" name="id">
+      <state-number>601</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="289" parent="69" name="category">
+      <state-number>601</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="290" parent="69" name="description">
+      <state-number>601</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <key id="291" parent="69" name="pattern_pkey">
+      <object-id>16634</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="292" parent="69" name="pattern_category_fkey">
+      <object-id>16746</object-id>
+      <columns>category</columns>
+      <ref-key>~.category.category_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="293" parent="70" name="id">
+      <state-number>633</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;textile.textile_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="294" parent="70" name="description">
+      <state-number>606</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <column id="295" parent="70" name="origin">
+      <state-number>606</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="296" parent="70" name="colour">
+      <state-number>606</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="297" parent="70" name="colour_intensity">
+      <state-number>606</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="298" parent="70" name="sampled">
+      <state-number>606</state-number>
+      <mandatory>1</mandatory>
+      <data-type>bool(1)|-7</data-type>
+      <default-expression>true</default-expression>
+    </column>
+    <column id="299" parent="70" name="category">
+      <state-number>606</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="300" parent="70" name="selection">
+      <state-number>606</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <key id="301" parent="70" name="textile_pkey">
+      <object-id>16636</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="302" parent="70" name="textile_origin_fkey">
+      <object-id>16766</object-id>
+      <columns>origin</columns>
+      <ref-key>~.origin.origin_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="303" parent="70" name="textile_colour_fkey">
+      <object-id>16756</object-id>
+      <columns>colour</columns>
+      <ref-key>~lut.colour.colour_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="304" parent="70" name="textile_colour_intensity_fkey">
+      <object-id>16761</object-id>
+      <columns>colour_intensity</columns>
+      <ref-key>~lut.colour_intensity.colour_intensity_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="305" parent="70" name="textile_category_fkey">
+      <object-id>16751</object-id>
+      <columns>category</columns>
+      <ref-key>~.category.category_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="306" parent="70" name="textile_selection_fkey">
+      <object-id>16771</object-id>
+      <columns>selection</columns>
+      <ref-key>~selection.selection.selection_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="307" parent="71" name="id">
+      <state-number>602</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="308" parent="71" name="description">
+      <state-number>602</state-number>
+      <data-type>text(max)|12</data-type>
+    </column>
+    <column id="309" parent="72" name="id">
+      <state-number>607</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="310" parent="72" name="description">
+      <state-number>607</state-number>
+      <data-type>text(max)|12</data-type>
+    </column>
+    <column id="311" parent="75" name="id">
+      <state-number>610</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="312" parent="75" name="description">
+      <state-number>610</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(30)|12</data-type>
+    </column>
+    <key id="313" parent="75" name="application_pkey">
+      <object-id>16638</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="314" parent="76" name="id">
+      <state-number>611</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="315" parent="76" name="description">
+      <state-number>611</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <key id="316" parent="76" name="micdelust_pkey">
+      <object-id>16640</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="317" parent="77" name="id">
+      <state-number>612</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="318" parent="77" name="description">
+      <state-number>612</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <key id="319" parent="77" name="micid_pkey">
+      <object-id>16642</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="320" parent="78" name="id">
+      <state-number>613</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="321" parent="78" name="description">
+      <state-number>613</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <key id="322" parent="78" name="micpol_pkey">
+      <object-id>16644</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="323" parent="79" name="id">
+      <state-number>634</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;thread.microscopy_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="324" parent="79" name="thread">
+      <state-number>566</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="325" parent="79" name="type">
+      <state-number>566</state-number>
+      <data-type>varchar(40)|12</data-type>
+    </column>
+    <column id="326" parent="79" name="material">
+      <state-number>566</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="327" parent="79" name="percentage">
+      <state-number>566</state-number>
+      <mandatory>1</mandatory>
+      <data-type>float4(8,8)|7</data-type>
+    </column>
+    <column id="328" parent="79" name="colour1">
+      <state-number>566</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="329" parent="79" name="colour2">
+      <state-number>566</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="330" parent="79" name="colour_intensity">
+      <state-number>566</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="331" parent="79" name="delust">
+      <state-number>566</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="332" parent="79" name="pol">
+      <state-number>566</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="333" parent="79" name="flua_colour">
+      <state-number>566</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="334" parent="79" name="flua_intensity">
+      <state-number>566</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="335" parent="79" name="flud_colour">
+      <state-number>566</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="336" parent="79" name="flud_intensity">
+      <state-number>566</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="337" parent="79" name="flun_colour">
+      <state-number>566</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="338" parent="79" name="flun_intensity">
+      <state-number>566</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="339" parent="79" name="rarity">
+      <state-number>566</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <key id="340" parent="79" name="microscopy_pkey">
+      <object-id>16646</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="341" parent="79" name="microscopy_thread_fkey">
+      <object-id>16836</object-id>
+      <columns>thread</columns>
+      <ref-key>~.thread.thread_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="342" parent="79" name="microscopy_material_fkey">
+      <object-id>16826</object-id>
+      <columns>material</columns>
+      <ref-key>~.micid.micid_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="343" parent="79" name="microscopy_colour1_fkey">
+      <object-id>16776</object-id>
+      <columns>colour1</columns>
+      <ref-key>~lut.colour.colour_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="344" parent="79" name="microscopy_colour2_fkey">
+      <object-id>16781</object-id>
+      <columns>colour2</columns>
+      <ref-key>~lut.colour.colour_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="345" parent="79" name="microscopy_colour_intensity_fkey">
+      <object-id>16786</object-id>
+      <columns>colour_intensity</columns>
+      <ref-key>~lut.colour_intensity.colour_intensity_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="346" parent="79" name="microscopy_delust_fkey">
+      <object-id>16791</object-id>
+      <columns>delust</columns>
+      <ref-key>~.micdelust.micdelust_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="347" parent="79" name="microscopy_pol_fkey">
+      <object-id>16831</object-id>
+      <columns>pol</columns>
+      <ref-key>~.micpol.micpol_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="348" parent="79" name="microscopy_flua_colour_fkey">
+      <object-id>16796</object-id>
+      <columns>flua_colour</columns>
+      <ref-key>~lut.colour.colour_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="349" parent="79" name="microscopy_flua_intensity_fkey">
+      <object-id>16801</object-id>
+      <columns>flua_intensity</columns>
+      <ref-key>~lut.colour_intensity.colour_intensity_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="350" parent="79" name="microscopy_flud_colour_fkey">
+      <object-id>16806</object-id>
+      <columns>flud_colour</columns>
+      <ref-key>~lut.colour.colour_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="351" parent="79" name="microscopy_flud_intensity_fkey">
+      <object-id>16811</object-id>
+      <columns>flud_intensity</columns>
+      <ref-key>~lut.colour_intensity.colour_intensity_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="352" parent="79" name="microscopy_flun_colour_fkey">
+      <object-id>16816</object-id>
+      <columns>flun_colour</columns>
+      <ref-key>~lut.colour.colour_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="353" parent="79" name="microscopy_flun_intensity_fkey">
+      <object-id>16821</object-id>
+      <columns>flun_intensity</columns>
+      <ref-key>~lut.colour_intensity.colour_intensity_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="354" parent="80" name="id">
+      <state-number>618</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="355" parent="80" name="description">
+      <state-number>618</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(10)|12</data-type>
+    </column>
+    <key id="356" parent="80" name="number_of_fibres_pkey">
+      <object-id>16648</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="357" parent="81" name="id">
+      <state-number>619</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="358" parent="81" name="description">
+      <state-number>619</state-number>
+      <mandatory>1</mandatory>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <key id="359" parent="81" name="structure_pkey">
+      <object-id>16650</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="360" parent="82" name="id">
+      <state-number>635</state-number>
+      <mandatory>1</mandatory>
+      <data-type>serial(10)|4</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>nextval(&apos;thread.thread_id_seq&apos;::regclass)</default-expression>
+    </column>
+    <column id="361" parent="82" name="textile">
+      <state-number>614</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="362" parent="82" name="application">
+      <state-number>614</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="363" parent="82" name="thickness">
+      <state-number>614</state-number>
+      <mandatory>1</mandatory>
+      <data-type>float4(8,8)|7</data-type>
+    </column>
+    <column id="364" parent="82" name="structure">
+      <state-number>614</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="365" parent="82" name="nfibres">
+      <state-number>614</state-number>
+      <mandatory>1</mandatory>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="366" parent="82" name="description">
+      <state-number>614</state-number>
+      <data-type>varchar(25)|12</data-type>
+    </column>
+    <key id="367" parent="82" name="thread_pkey">
+      <object-id>16652</object-id>
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="368" parent="82" name="thread_textile_fkey">
+      <object-id>16856</object-id>
+      <columns>textile</columns>
+      <ref-key>~textile.textile.textile_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="369" parent="82" name="thread_application_fkey">
+      <object-id>16841</object-id>
+      <columns>application</columns>
+      <ref-key>~.application.application_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="370" parent="82" name="thread_structure_fkey">
+      <object-id>16851</object-id>
+      <columns>structure</columns>
+      <ref-key>~.structure.structure_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="371" parent="82" name="thread_nfibres_fkey">
+      <object-id>16846</object-id>
+      <columns>nfibres</columns>
+      <ref-key>~.number_of_fibres.number_of_fibres_pkey</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="372" parent="83" name="id">
+      <state-number>615</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="373" parent="83" name="description">
+      <state-number>615</state-number>
+      <data-type>text(max)|12</data-type>
+    </column>
+    <column id="374" parent="83" name="sample">
+      <state-number>615</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="375" parent="84" name="id">
+      <state-number>620</state-number>
+      <data-type>int4(10)|4</data-type>
+    </column>
+    <column id="376" parent="84" name="description">
+      <state-number>620</state-number>
+      <data-type>text(max)|12</data-type>
+    </column>
+  </database-model>
+</dataSource>
