@@ -144,7 +144,7 @@ class Textilecategory(models.Model):
 class Textilecolour(models.Model):
     description = models.CharField(max_length=30, blank=True, null=True)
     textile = models.ForeignKey(Textile,  on_delete=models.CASCADE, db_column='textile')
-    spectrum = models.BinaryField# This field type is a guess.
+    spectrum = models.TextField# This field type is a guess.
 
     class Meta:
         managed = False
@@ -175,7 +175,7 @@ class Textile(models.Model):
     origin = models.ForeignKey(Origin,  on_delete=models.PROTECT, db_column='origin')
     colour = models.ForeignKey(Colour,  on_delete=models.PROTECT, db_column='colour')
     colour_intensity = models.ForeignKey(ColourIntensity, on_delete=models.PROTECT, db_column='colour_intensity')
-    sampled = models.BooleanField()
+    sampled = models.BooleanField(default=False)
     category = models.ForeignKey(Textilecategory, on_delete=models.PROTECT, db_column='category')
     selection = models.ForeignKey(Selection, on_delete=models.PROTECT, db_column='selection')
 
@@ -317,7 +317,7 @@ class Fibre(models.Model):
         db_table = 'fibre'
 
 
-class _Msp(models.Model):
+class Msp(models.Model):
     fibre = models.ForeignKey(Fibre,  on_delete=models.CASCADE, db_column='fibre')
     spectrum = models.TextField()  # This field type is a guess.
 
