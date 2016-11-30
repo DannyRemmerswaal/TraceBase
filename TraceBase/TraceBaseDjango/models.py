@@ -141,14 +141,7 @@ class Textilecategory(models.Model):
         db_table = 'textileCategory'
 
 
-class Textilecolour(models.Model):
-    description = models.CharField(max_length=30, blank=True, null=True)
-    textile = models.ForeignKey(Textile,  on_delete=models.CASCADE, db_column='textile')
-    spectrum = models.TextField# This field type is a guess.
 
-    class Meta:
-        managed = False
-        db_table = 'textileColour'
 
 
 class Origin(models.Model):
@@ -184,6 +177,15 @@ class Textile(models.Model):
         db_table = 'textile'
 
 
+class Textilecolour(models.Model):
+    description = models.CharField(max_length=30, blank=True, null=True)
+    textile = models.ForeignKey(Textile,  on_delete=models.CASCADE, db_column='textile')
+    spectrum = models.TextField# This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = 'textileColour'
+        
 class Description(models.Model):
     sample = models.ForeignKey(Textile, on_delete=models.CASCADE, db_column='sample')
     pattern = models.ForeignKey(Pattern,  on_delete=models.PROTECT, db_column='pattern')
