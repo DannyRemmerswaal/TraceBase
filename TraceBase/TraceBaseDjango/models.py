@@ -3,7 +3,7 @@
 #   * Make sure each ForeignKey has `on_delete` set to the desired behavior. DONE
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table. DONE
 # Feel free to rename the models, but don't rename db_table values or field names.
-#   * Check for incorrect datatypes (Real > ?)
+#   * Check for incorrect datatypes (Real > ?) DONE
 # from __future__ import unicode_literals NOT NECESSARY YET
 
 from django.db import models
@@ -185,10 +185,10 @@ class Textilecolour(models.Model):
     class Meta:
         managed = False
         db_table = 'textileColour'
-        
+
 class Description(models.Model):
-    sample = models.ForeignKey(Textile, on_delete=models.CASCADE, db_column='sample')
-    pattern = models.ForeignKey(Pattern,  on_delete=models.PROTECT, db_column='pattern')
+    sample = models.ForeignKey(Textile, on_delete=models.CASCADE, db_column='sample', related_name="sample")
+    pattern = models.ForeignKey(Pattern,  on_delete=models.PROTECT, db_column='pattern', related_name="pattern")
     description = models.CharField(max_length=30, blank=True, null=True)
     num1 = models.FloatField(blank=True, null=True)
     num2 = models.FloatField(blank=True, null=True)
@@ -274,17 +274,17 @@ class Microscopy(models.Model):
     type = models.CharField(max_length=40, blank=True, null=True)
     material = models.ForeignKey(Micid,  on_delete=models.PROTECT, db_column='material')
     percentage = models.FloatField()
-    colour1 = models.ForeignKey(Colour,  on_delete=models.PROTECT, db_column='colour1')
-    colour2 = models.ForeignKey(Colour,  on_delete=models.PROTECT, db_column='colour2')
+    colour1 = models.ForeignKey(Colour,  on_delete=models.PROTECT, db_column='colour1', related_name="colour1")
+    colour2 = models.ForeignKey(Colour,  on_delete=models.PROTECT, db_column='colour2', related_name="colour2")
     colour_intensity = models.ForeignKey(ColourIntensity,  on_delete=models.PROTECT, db_column='colour_intensity')
     delust = models.ForeignKey(Micdelust,  on_delete=models.DO_NOTHING, db_column='delust')
     pol = models.ForeignKey(Micpol,  on_delete=models.PROTECT, db_column='pol')
-    flua_colour = models.ForeignKey(Colour,  on_delete=models.PROTECT, db_column='flua_colour')
-    flua_intensity = models.ForeignKey(ColourIntensity,  on_delete=models.PROTECT, db_column='flua_intensity')
-    flud_colour = models.ForeignKey(Colour,  on_delete=models.PROTECT, db_column='flud_colour')
-    flud_intensity = models.ForeignKey(ColourIntensity,  on_delete=models.PROTECT, db_column='flud_intensity')
-    flun_colour = models.ForeignKey(Colour,  on_delete=models.PROTECT, db_column='flun_colour')
-    flun_intensity = models.ForeignKey(ColourIntensity,  on_delete=models.PROTECT, db_column='flun_intensity')
+    flua_colour = models.ForeignKey(Colour,  on_delete=models.PROTECT, db_column='flua_colour', related_name="flua_colour")
+    flua_intensity = models.ForeignKey(ColourIntensity,  on_delete=models.PROTECT, db_column='flua_intensity', related_name="sample")
+    flud_colour = models.ForeignKey(Colour,  on_delete=models.PROTECT, db_column='flud_colour', related_name="flud_colour")
+    flud_intensity = models.ForeignKey(ColourIntensity,  on_delete=models.PROTECT, db_column='flud_intensity', related_name="flud_intensity")
+    flun_colour = models.ForeignKey(Colour,  on_delete=models.PROTECT, db_column='flun_colour', related_name="flun_colour")
+    flun_intensity = models.ForeignKey(ColourIntensity,  on_delete=models.PROTECT, db_column='flun_intensity', related_name="flun_intensity")
     rarity = models.IntegerField(blank=True, null=True)
 
     class Meta:
@@ -311,7 +311,7 @@ class Dye(models.Model):
 
 
 class Fibre(models.Model):
-    thread = models.ForeignKey(Thread,  on_delete=models.PROTECT, db_column='thread')
+    thread_id = models.ForeignKey(Thread,  on_delete=models.PROTECT, db_column='thread')
     fibre_type = models.ForeignKey(Microscopy,  on_delete=models.PROTECT, db_column='fibre_type')
 
     class Meta:
