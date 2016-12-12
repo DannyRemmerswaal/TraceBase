@@ -18,6 +18,8 @@ class Colour(models.Model):
     class Meta:
         managed = False
         db_table = 'colour'
+        verbose_name = 'kleur'
+        verbose_name_plural = 'kleuren'
 
 
 class ColourIntensity(models.Model):
@@ -27,8 +29,10 @@ class ColourIntensity(models.Model):
     class Meta:
         managed = False
         db_table = 'colour_intensity'
+        verbose_name = 'kleur intensiteit'
+        verbose_name_plural = 'kleur intensiteiten'
 
-# Item models
+#  Item models
 
 
 class Population(models.Model):
@@ -38,7 +42,8 @@ class Population(models.Model):
     class Meta:
         managed = False
         db_table = 'population'
-
+        verbose_name = 'herkomst'
+        verbose_name_plural = 'herkomsten'
 
 class Category(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -47,6 +52,8 @@ class Category(models.Model):
     class Meta:
         managed = False
         db_table = 'category'
+        verbose_name = 'categorie'
+        verbose_name_plural = 'categorieen'
 
 
 class Subcategory(models.Model):
@@ -57,6 +64,8 @@ class Subcategory(models.Model):
     class Meta:
         managed = False
         db_table = 'subcategory'
+        verbose_name = 'subcategorie'
+        verbose_name_plural = 'subcategorieen'
 
 
 class Subsubcategory(models.Model):
@@ -67,6 +76,8 @@ class Subsubcategory(models.Model):
     class Meta:
         managed = False
         db_table = 'subsubcategory'
+        verbose_name = 'subsubcategorie'
+        verbose_name_plural = 'subsubcategorieen'
 
 
 class Action(models.Model):
@@ -76,7 +87,8 @@ class Action(models.Model):
     class Meta:
         managed = False
         db_table = 'action'
-
+        verbose_name = 'actie'
+        verbose_name_plural = 'acties'
 
 class Item(models.Model):
     description = models.CharField(max_length=30)
@@ -86,6 +98,8 @@ class Item(models.Model):
     class Meta:
         managed = False
         db_table = 'item'
+        verbose_name = 'object'
+        verbose_name_plural = 'objecten'
 
 
 class History(models.Model):
@@ -99,6 +113,8 @@ class History(models.Model):
     class Meta:
         managed = False
         db_table = 'history'
+        verbose_name = 'geschiedenis objecten'
+        verbose_name_plural = 'geschiedenis objecten'
 
 # Selection models
 
@@ -110,7 +126,8 @@ class Selection(models.Model):
     class Meta:
         managed = False
         db_table = 'selection'
-
+        verbose_name = 'selectie'
+        verbose_name_plural = 'selecties'
 
 class Image(models.Model):
     selection = models.ForeignKey(Selection,  on_delete=models.CASCADE, db_column='selection')
@@ -122,6 +139,8 @@ class Image(models.Model):
     class Meta:
         managed = False
         db_table = 'image'
+        verbose_name = 'afbeelding'
+        verbose_name_plural = 'afbeeldingen selecties'
 
 # Textile models
 
@@ -139,9 +158,8 @@ class Textilecategory(models.Model):
     class Meta:
         managed = False
         db_table = 'textileCategory'
-
-
-
+        verbose_name = 'textiel categorie'
+        verbose_name_plural = 'textiel categorieen'
 
 
 class Origin(models.Model):
@@ -151,6 +169,8 @@ class Origin(models.Model):
     class Meta:
         managed = False
         db_table = 'origin'
+        verbose_name = 'herkomst'
+        verbose_name_plural = 'herkomsten'
 
 
 class Pattern(models.Model):
@@ -161,6 +181,8 @@ class Pattern(models.Model):
     class Meta:
         managed = False
         db_table = 'pattern'
+        verbose_name = 'textielpatroon'
+        verbose_name_plural = 'textielpatronen'
 
 
 class Textile(models.Model):
@@ -175,6 +197,8 @@ class Textile(models.Model):
     class Meta:
         managed = False
         db_table = 'textile'
+        verbose_name = 'textiel'
+        verbose_name_plural = 'textielen'
 
 
 class Textilecolour(models.Model):
@@ -185,6 +209,8 @@ class Textilecolour(models.Model):
     class Meta:
         managed = False
         db_table = 'textileColour'
+        verbose_name = 'textielkleur'
+        verbose_name_plural = 'textielkleuren'
 
 class Description(models.Model):
     sample = models.ForeignKey(Textile, on_delete=models.CASCADE, db_column='sample', related_name="sample")
@@ -198,6 +224,8 @@ class Description(models.Model):
     class Meta:
         managed = False
         db_table = 'description'
+        verbose_name = 'textielbeschrijving'
+        verbose_name_plural = 'textielbeschrijvingen'
 
 # Thread models
 
@@ -209,6 +237,8 @@ class Application(models.Model):
     class Meta:
         managed = False
         db_table = 'application'
+        verbose_name = 'applicatie'
+        verbose_name_plural = 'applicaties'
 
 
 class Structure(models.Model):
@@ -218,6 +248,8 @@ class Structure(models.Model):
     class Meta:
         managed = False
         db_table = 'structure'
+        verbose_name = 'structuur'
+        verbose_name_plural = 'structuren'
 
 
 class NumberOfFibres(models.Model):
@@ -227,6 +259,8 @@ class NumberOfFibres(models.Model):
     class Meta:
         managed = False
         db_table = 'number_of_fibres'
+        verbose_name = 'aantal vezels'
+        verbose_name_plural = 'aantal vezels'
 
 
 class Micdelust(models.Model):
@@ -236,6 +270,8 @@ class Micdelust(models.Model):
     class Meta:
         managed = False
         db_table = 'micdelust'
+        verbose_name = 'microscopie pigmentering'
+        verbose_name_plural = 'microscopie pigmentering'
 
 
 class Micid(models.Model):
@@ -245,6 +281,8 @@ class Micid(models.Model):
     class Meta:
         managed = False
         db_table = 'micid'
+        verbose_name = 'microscopie identificatie'
+        verbose_name_plural = 'microscopie identificatie'
 
 
 class Micpol(models.Model):
@@ -254,6 +292,8 @@ class Micpol(models.Model):
     class Meta:
         managed = False
         db_table = 'micpol'
+        verbose_name = 'microscopie polarisatie'
+        verbose_name_plural = 'microscopie polarisatie'
 
 
 class Thread(models.Model):
@@ -267,6 +307,8 @@ class Thread(models.Model):
     class Meta:
         managed = False
         db_table = 'thread'
+        verbose_name = 'draad'
+        verbose_name_plural = 'draden'
 
 
 class Microscopy(models.Model):
@@ -290,6 +332,8 @@ class Microscopy(models.Model):
     class Meta:
         managed = False
         db_table = 'microscopy'
+        verbose_name = 'microscopie draad'
+        verbose_name_plural = 'microscopie draad'
 
 # Fibre models
 
@@ -308,7 +352,8 @@ class Dye(models.Model):
     class Meta:
         managed = False
         db_table = 'dye'
-
+        verbose_name = 'kleurstof vezel'
+        verbose_name_plural = 'kleurstoffen vezel'
 
 class Fibre(models.Model):
     thread_id = models.ForeignKey(Thread,  on_delete=models.PROTECT, db_column='thread')
@@ -317,6 +362,8 @@ class Fibre(models.Model):
     class Meta:
         managed = False
         db_table = 'fibre'
+        verbose_name = 'vezel'
+        verbose_name_plural = 'vezels'
 
 
 class Msp(models.Model):
@@ -326,7 +373,8 @@ class Msp(models.Model):
     class Meta:
         managed = False
         db_table = '_msp'
-
+        verbose_name = 'msp vezel'
+        verbose_name_plural = 'msp`s vezel'
 
 class DyeAnalysis(models.Model):
     fibre = models.ForeignKey(Fibre,  on_delete=models.CASCADE, db_column='fibre')
@@ -336,6 +384,8 @@ class DyeAnalysis(models.Model):
     class Meta:
         managed = False
         db_table = 'dye_analysis'
+        verbose_name = 'kleuranalyse vezel'
+        verbose_name_plural = 'kleuranalyes vezel'
 
 
 
