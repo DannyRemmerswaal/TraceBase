@@ -42,8 +42,8 @@ class Population(models.Model):
     class Meta:
         managed = False
         db_table = 'population'
-        verbose_name = 'herkomst'
-        verbose_name_plural = 'herkomsten'
+        verbose_name = 'herkomst object'
+        verbose_name_plural = 'herkomsten object'
 
 class Category(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -158,8 +158,8 @@ class Textilecategory(models.Model):
     class Meta:
         managed = False
         db_table = 'textileCategory'
-        verbose_name = 'textiel categorie'
-        verbose_name_plural = 'textiel categorieen'
+        verbose_name = 'categorie textiel'
+        verbose_name_plural = 'categorieen textiel'
 
 
 class Origin(models.Model):
@@ -169,8 +169,8 @@ class Origin(models.Model):
     class Meta:
         managed = False
         db_table = 'origin'
-        verbose_name = 'herkomst'
-        verbose_name_plural = 'herkomsten'
+        verbose_name = 'herkomst textiel'
+        verbose_name_plural = 'herkomsten textiel'
 
 
 class Pattern(models.Model):
