@@ -332,8 +332,8 @@ class Microscopy(models.Model):
     class Meta:
         managed = False
         db_table = 'microscopy'
-        verbose_name = 'microscopie draad'
-        verbose_name_plural = 'microscopie draad'
+        verbose_name = 'microscopiemeting draad'
+        verbose_name_plural = 'microscopiemetingen draad'
 
 # Fibre models
 
