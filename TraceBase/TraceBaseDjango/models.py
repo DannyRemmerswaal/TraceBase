@@ -32,6 +32,9 @@ class ColourIntensity(models.Model):
         verbose_name = 'kleur intensiteit'
         verbose_name_plural = 'kleur intensiteiten'
 
+    def __str__(self):
+        return self.description
+
 #  Item models
 
 
@@ -375,6 +378,7 @@ class Msp(models.Model):
         db_table = '_msp'
         verbose_name = 'msp vezel'
         verbose_name_plural = 'msp`s vezel'
+
 
 class DyeAnalysis(models.Model):
     fibre = models.ForeignKey(Fibre,  on_delete=models.CASCADE, db_column='fibre')

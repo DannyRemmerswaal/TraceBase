@@ -17,6 +17,6 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^TraceBaseDjango/', include('TraceBaseDjango.urls')),
+    url(r'', include('TraceBaseDjango.urls')),
     url(r'^admin/', admin.site.urls),
 ]
