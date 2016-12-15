@@ -21,6 +21,9 @@ class Colour(models.Model):
         verbose_name = 'kleur'
         verbose_name_plural = 'kleuren'
 
+    def __str__(self):
+        return self.description
+
 
 class ColourIntensity(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -48,6 +51,10 @@ class Population(models.Model):
         verbose_name = 'herkomst object'
         verbose_name_plural = 'herkomsten object'
 
+    def __str__(self):
+        return self.description
+
+
 class Category(models.Model):
     id = models.IntegerField(primary_key=True)
     description = models.CharField(max_length=30)
@@ -57,6 +64,9 @@ class Category(models.Model):
         db_table = 'category'
         verbose_name = 'categorie'
         verbose_name_plural = 'categorieen'
+
+    def __str__(self):
+        return self.description
 
 
 class Subcategory(models.Model):
@@ -70,6 +80,9 @@ class Subcategory(models.Model):
         verbose_name = 'subcategorie'
         verbose_name_plural = 'subcategorieen'
 
+    def __str__(self):
+        return self.description
+
 
 class Subsubcategory(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -82,6 +95,9 @@ class Subsubcategory(models.Model):
         verbose_name = 'subsubcategorie'
         verbose_name_plural = 'subsubcategorieen'
 
+    def __str__(self):
+        return self.description
+
 
 class Action(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -93,6 +109,10 @@ class Action(models.Model):
         verbose_name = 'actie'
         verbose_name_plural = 'acties'
 
+    def __str__(self):
+        return self.description
+
+
 class Item(models.Model):
     description = models.CharField(max_length=30)
     category = models.ForeignKey(Subsubcategory,  on_delete=models.PROTECT, db_column='category')
@@ -103,6 +123,9 @@ class Item(models.Model):
         db_table = 'item'
         verbose_name = 'object'
         verbose_name_plural = 'objecten'
+
+    def __str__(self):
+        return self.description
 
 
 class History(models.Model):
@@ -119,6 +142,9 @@ class History(models.Model):
         verbose_name = 'geschiedenis objecten'
         verbose_name_plural = 'geschiedenis objecten'
 
+    def __str__(self):
+        return self.description
+
 # Selection models
 
 
@@ -132,6 +158,10 @@ class Selection(models.Model):
         verbose_name = 'selectie'
         verbose_name_plural = 'selecties'
 
+    def __str__(self):
+        return 'Item ID : ' + self.item + '  Description : ' + self.description
+
+
 class Image(models.Model):
     selection = models.ForeignKey(Selection,  on_delete=models.CASCADE, db_column='selection')
     description = models.CharField(max_length=40)
@@ -144,6 +174,9 @@ class Image(models.Model):
         db_table = 'image'
         verbose_name = 'afbeelding'
         verbose_name_plural = 'afbeeldingen selecties'
+
+    def __str__(self):
+        return 'Selection ID : ' + self.selection + '  Description : ' + self.description
 
 # Textile models
 
@@ -164,6 +197,9 @@ class Textilecategory(models.Model):
         verbose_name = 'categorie textiel'
         verbose_name_plural = 'categorieen textiel'
 
+    def __str__(self):
+        return self.description
+
 
 class Origin(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -174,6 +210,9 @@ class Origin(models.Model):
         db_table = 'origin'
         verbose_name = 'herkomst textiel'
         verbose_name_plural = 'herkomsten textiel'
+
+    def __str__(self):
+        return self.description
 
 
 class Pattern(models.Model):
@@ -186,6 +225,9 @@ class Pattern(models.Model):
         db_table = 'pattern'
         verbose_name = 'textielpatroon'
         verbose_name_plural = 'textielpatronen'
+
+    def __str__(self):
+        return self.description
 
 
 class Textile(models.Model):
@@ -203,17 +245,24 @@ class Textile(models.Model):
         verbose_name = 'textiel'
         verbose_name_plural = 'textielen'
 
+    def __str__(self):
+        return self.description + '  Selection ID : ' + self.selection
+
 
 class Textilecolour(models.Model):
     description = models.CharField(max_length=30, blank=True, null=True)
     textile = models.ForeignKey(Textile,  on_delete=models.CASCADE, db_column='textile')
-    spectrum = models.TextField# This field type is a guess.
+    spectrum = models.TextField  # This field type is a guess.
 
     class Meta:
         managed = False
         db_table = 'textileColour'
         verbose_name = 'textielkleur'
         verbose_name_plural = 'textielkleuren'
+
+    def __str__(self):
+        return self.description + '  Textile ID : ' + self.textile
+
 
 class Description(models.Model):
     sample = models.ForeignKey(Textile, on_delete=models.CASCADE, db_column='sample', related_name="sample")
@@ -230,6 +279,9 @@ class Description(models.Model):
         verbose_name = 'textielbeschrijving'
         verbose_name_plural = 'textielbeschrijvingen'
 
+    def __str__(self):
+        return 'Textile ID ' + str(self.sample) + '  Description : ' + self.description
+
 # Thread models
 
 
@@ -243,6 +295,9 @@ class Application(models.Model):
         verbose_name = 'applicatie'
         verbose_name_plural = 'applicaties'
 
+    def __str__(self):
+        return self.description
+
 
 class Structure(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -253,6 +308,9 @@ class Structure(models.Model):
         db_table = 'structure'
         verbose_name = 'structuur'
         verbose_name_plural = 'structuren'
+
+    def __str__(self):
+        return self.description
 
 
 class NumberOfFibres(models.Model):
@@ -265,6 +323,9 @@ class NumberOfFibres(models.Model):
         verbose_name = 'aantal vezels'
         verbose_name_plural = 'aantal vezels'
 
+    def __str__(self):
+        return self.description
+
 
 class Micdelust(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -275,6 +336,9 @@ class Micdelust(models.Model):
         db_table = 'micdelust'
         verbose_name = 'microscopie pigmentering'
         verbose_name_plural = 'microscopie pigmentering'
+
+    def __str__(self):
+        return self.description
 
 
 class Micid(models.Model):
@@ -287,6 +351,9 @@ class Micid(models.Model):
         verbose_name = 'microscopie identificatie'
         verbose_name_plural = 'microscopie identificatie'
 
+    def __str__(self):
+        return self.description
+
 
 class Micpol(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -297,6 +364,9 @@ class Micpol(models.Model):
         db_table = 'micpol'
         verbose_name = 'microscopie polarisatie'
         verbose_name_plural = 'microscopie polarisatie'
+
+    def __str__(self):
+        return self.description
 
 
 class Thread(models.Model):
@@ -312,6 +382,9 @@ class Thread(models.Model):
         db_table = 'thread'
         verbose_name = 'draad'
         verbose_name_plural = 'draden'
+
+    def __str__(self):
+        return self.description
 
 
 class Microscopy(models.Model):
@@ -338,6 +411,9 @@ class Microscopy(models.Model):
         verbose_name = 'microscopiemeting draad'
         verbose_name_plural = 'microscopiemetingen draad'
 
+    def __str__(self):
+        return 'Thread ID : ' + str(self.thread) + '  ID : ' + str(self.id)
+
 # Fibre models
 
 
@@ -358,8 +434,12 @@ class Dye(models.Model):
         verbose_name = 'kleurstof vezel'
         verbose_name_plural = 'kleurstoffen vezel'
 
+    def __str__(self):
+        return 'Applicatie : ' + self.application + '  Kleur : ' + self.colour + '  CI Nummer ' + str(self.ci_number)
+
+
 class Fibre(models.Model):
-    thread_id = models.ForeignKey(Thread,  on_delete=models.PROTECT, db_column='thread')
+    thread_id = models.ForeignKey(Thread,  on_delete=models.PROTECT, db_column='thread_id')
     fibre_type = models.ForeignKey(Microscopy,  on_delete=models.PROTECT, db_column='fibre_type')
 
     class Meta:
@@ -367,6 +447,9 @@ class Fibre(models.Model):
         db_table = 'fibre'
         verbose_name = 'vezel'
         verbose_name_plural = 'vezels'
+
+    def __str__(self):
+        return 'Thread ID : ' + str(self.thread_id) + '  ID: ' + str(self.id)
 
 
 class Msp(models.Model):
@@ -379,6 +462,9 @@ class Msp(models.Model):
         verbose_name = 'msp vezel'
         verbose_name_plural = 'msp`s vezel'
 
+    def __str__(self):
+        return 'Fibre ID : ' + str(self.fibre)
+
 
 class DyeAnalysis(models.Model):
     fibre = models.ForeignKey(Fibre,  on_delete=models.CASCADE, db_column='fibre')
@@ -390,6 +476,9 @@ class DyeAnalysis(models.Model):
         db_table = 'dye_analysis'
         verbose_name = 'kleuranalyse vezel'
         verbose_name_plural = 'kleuranalyes vezel'
+
+    def __str__(self):
+        return 'Fibre ID : ' + str(self.fibre) + '  Dye ID : ' + str(self.dye)
 
 
 
