@@ -159,7 +159,7 @@ class Selection(models.Model):
         verbose_name_plural = 'selecties'
 
     def __str__(self):
-        return 'Item ID : ' + self.item + '  Description : ' + self.description
+        return 'Naam object : ' + str(self.item) + '  Beschrijving selectie : ' + self.description
 
 
 class Image(models.Model):
@@ -176,7 +176,7 @@ class Image(models.Model):
         verbose_name_plural = 'afbeeldingen selecties'
 
     def __str__(self):
-        return 'Selection ID : ' + self.selection + '  Description : ' + self.description
+        return 'Selectie : ' + self.selection + '  Description : ' + self.description
 
 # Textile models
 
@@ -246,7 +246,7 @@ class Textile(models.Model):
         verbose_name_plural = 'textielen'
 
     def __str__(self):
-        return self.description + '  Selection ID : ' + self.selection
+        return self.description + '  Naam Selectie  ' + str(self.selection)
 
 
 class Textilecolour(models.Model):
@@ -261,7 +261,7 @@ class Textilecolour(models.Model):
         verbose_name_plural = 'textielkleuren'
 
     def __str__(self):
-        return self.description + '  Textile ID : ' + self.textile
+        return self.description + '  Textiel : ' + str(self.textile)
 
 
 class Description(models.Model):
@@ -280,7 +280,7 @@ class Description(models.Model):
         verbose_name_plural = 'textielbeschrijvingen'
 
     def __str__(self):
-        return 'Textile ID ' + str(self.sample) + '  Description : ' + self.description
+        return 'Textiel :  ' + str(self.sample) + '  Beschrijving : ' + self.description
 
 # Thread models
 
@@ -449,7 +449,7 @@ class Fibre(models.Model):
         verbose_name_plural = 'vezels'
 
     def __str__(self):
-        return 'Thread ID : ' + str(self.thread_id) + '  ID: ' + str(self.id)
+        return 'Naam draad : ' + str(self.thread_id) + '  ID vezel: ' + str(self.id)
 
 
 class Msp(models.Model):
@@ -463,7 +463,7 @@ class Msp(models.Model):
         verbose_name_plural = 'msp`s vezel'
 
     def __str__(self):
-        return 'Fibre ID : ' + str(self.fibre)
+        return 'Naam vezel : ' + str(self.fibre)
 
 
 class DyeAnalysis(models.Model):
@@ -478,7 +478,7 @@ class DyeAnalysis(models.Model):
         verbose_name_plural = 'kleuranalyes vezel'
 
     def __str__(self):
-        return 'Fibre ID : ' + str(self.fibre) + '  Dye ID : ' + str(self.dye)
+        return 'Naam vezel : ' + str(self.fibre) + '  Kleurstof : ' + str(self.dye)
 
 
 
