@@ -18,5 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'', include('TraceBaseDjango.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^analyse/', admin.site.urls),
 ]

@@ -81,7 +81,7 @@ class Subcategory(models.Model):
         verbose_name_plural = 'subcategorieen'
 
     def __str__(self):
-        return self.description
+        return self.description + self.category.description
 
 
 class Subsubcategory(models.Model):
@@ -449,7 +449,7 @@ class Fibre(models.Model):
         verbose_name_plural = 'vezels'
 
     def __str__(self):
-        return 'Naam draad : ' + str(self.thread_id) + '  ID vezel: ' + str(self.id)
+        return 'Naam draad : ' + str(self.thread_id.description) + '  ID vezel: ' + str(self.id)
 
 
 class Msp(models.Model):
@@ -463,7 +463,7 @@ class Msp(models.Model):
         verbose_name_plural = 'msp`s vezel'
 
     def __str__(self):
-        return 'Naam vezel : ' + str(self.fibre)
+        return 'Vezel : ' + str(self.fibre)
 
 
 class DyeAnalysis(models.Model):
@@ -478,7 +478,7 @@ class DyeAnalysis(models.Model):
         verbose_name_plural = 'kleuranalyes vezel'
 
     def __str__(self):
-        return 'Naam vezel : ' + str(self.fibre) + '  Kleurstof : ' + str(self.dye)
+        return 'Vezel : ' + str(self.fibre) + '  Kleurstof : ' + str(self.dye)
 
 
 

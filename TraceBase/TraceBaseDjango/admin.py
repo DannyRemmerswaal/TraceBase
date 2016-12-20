@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import *
 
-admin.site.site_header = 'TraceBrace Administatie'
+admin.site.site_header = 'TraceBrace Analyse'
 
 # Register your models here.
 
