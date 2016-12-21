@@ -81,7 +81,7 @@ class Subcategory(models.Model):
         verbose_name_plural = 'subcategorieen'
 
     def __str__(self):
-        return self.description + self.category.description
+        return self.description + " , " +self.category.description
 
 
 class Subsubcategory(models.Model):
@@ -96,7 +96,7 @@ class Subsubcategory(models.Model):
         verbose_name_plural = 'subsubcategorieen'
 
     def __str__(self):
-        return self.description
+        return self.description + " , " + self.category.description + " , " + self.category.category.description
 
 
 class Action(models.Model):
@@ -125,7 +125,7 @@ class Item(models.Model):
         verbose_name_plural = 'objecten'
 
     def __str__(self):
-        return self.description
+        return self.description + " , " + self.category.description
 
 
 class History(models.Model):
@@ -143,7 +143,7 @@ class History(models.Model):
         verbose_name_plural = 'geschiedenis objecten'
 
     def __str__(self):
-        return self.description
+        return self.description + " , " + self.item.description
 
 # Selection models
 
@@ -159,7 +159,7 @@ class Selection(models.Model):
         verbose_name_plural = 'selecties'
 
     def __str__(self):
-        return 'Naam object : ' + str(self.item) + '  Beschrijving selectie : ' + self.description
+        return 'Object : ' + str(self.item) + ' ,  Beschrijving selectie : ' + self.description
 
 
 class Image(models.Model):
@@ -176,7 +176,7 @@ class Image(models.Model):
         verbose_name_plural = 'afbeeldingen selecties'
 
     def __str__(self):
-        return 'Selectie : ' + self.selection + '  Description : ' + self.description
+        return self.selection + ' ,  Beschrijving afbeelding : ' + self.description
 
 # Textile models
 
@@ -246,7 +246,7 @@ class Textile(models.Model):
         verbose_name_plural = 'textielen'
 
     def __str__(self):
-        return self.description + '  Naam Selectie  ' + str(self.selection)
+        return self.description + ' , Selectie :   ' + str(self.selection)
 
 
 class Textilecolour(models.Model):
@@ -261,7 +261,7 @@ class Textilecolour(models.Model):
         verbose_name_plural = 'textielkleuren'
 
     def __str__(self):
-        return self.description + '  Textiel : ' + str(self.textile)
+        return self.description + ' ,  Textiel : ' + str(self.textile.description)
 
 
 class Description(models.Model):
@@ -280,7 +280,7 @@ class Description(models.Model):
         verbose_name_plural = 'textielbeschrijvingen'
 
     def __str__(self):
-        return 'Textiel :  ' + str(self.sample) + '  Beschrijving : ' + self.description
+        return 'Textiel :  ' + str(self.sample) + ' ,  Beschrijving : ' + self.description
 
 # Thread models
 
@@ -384,7 +384,7 @@ class Thread(models.Model):
         verbose_name_plural = 'draden'
 
     def __str__(self):
-        return self.description
+        return self.description + " , " + str(self.textile)
 
 
 class Microscopy(models.Model):
@@ -412,7 +412,7 @@ class Microscopy(models.Model):
         verbose_name_plural = 'microscopiemetingen draad'
 
     def __str__(self):
-        return 'Thread ID : ' + str(self.thread) + '  ID : ' + str(self.id)
+        return 'Thread : ' + str(self.thread) + ' ,  ID meting : ' + str(self.id)
 
 # Fibre models
 
@@ -435,7 +435,7 @@ class Dye(models.Model):
         verbose_name_plural = 'kleurstoffen vezel'
 
     def __str__(self):
-        return 'Applicatie : ' + self.application + '  Kleur : ' + self.colour + '  CI Nummer ' + str(self.ci_number)
+        return 'Applicatie : ' + self.application + ' ,  Kleur : ' + self.colour + ' ,  CI Nummer ' + str(self.ci_number)
 
 
 class Fibre(models.Model):
@@ -449,7 +449,7 @@ class Fibre(models.Model):
         verbose_name_plural = 'vezels'
 
     def __str__(self):
-        return 'Naam draad : ' + str(self.thread_id.description) + '  ID vezel: ' + str(self.id)
+        return 'Naam draad : ' + str(self.thread_id.description) + ' ,  ID vezel: ' + str(self.id)
 
 
 class Msp(models.Model):
@@ -478,7 +478,7 @@ class DyeAnalysis(models.Model):
         verbose_name_plural = 'kleuranalyes vezel'
 
     def __str__(self):
-        return 'Vezel : ' + str(self.fibre) + '  Kleurstof : ' + str(self.dye)
+        return 'Vezel : ' + str(self.fibre) + ' ,  Kleurstof : ' + str(self.dye)
 
 
 
