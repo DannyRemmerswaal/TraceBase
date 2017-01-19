@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from TraceBaseDjango.models import *
 
 admin.site.site_header = 'TraceBrace Administratie'
 
