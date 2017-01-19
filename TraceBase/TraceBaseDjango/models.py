@@ -246,7 +246,7 @@ class Textile(models.Model):
         verbose_name_plural = 'textielen'
 
     def __str__(self):
-        return self.description + ' , Selectie :   ' + str(self.selection)
+        return 'Naam Textiel :   ' + self.description + ' , Selectie :   ' + str(self.selection)
 
 
 class Textilecolour(models.Model):

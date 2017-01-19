@@ -18,5 +18,10 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'', include('TraceBaseDjango.urls')),
-    url(r'^analyse/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
+    url(r'^item/',  admin.site.urls),
+    url(r'^selection/', admin.site.urls),
+    url(r'^vezel/', admin.site.urls),
+    url(r'^textiel/', admin.site.urls),
+    url(r'^draad/', admin.site.urls),
 ]
