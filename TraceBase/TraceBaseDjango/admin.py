@@ -19,7 +19,7 @@ admin.site.site_header = 'TraceBrace Administratie'
 
 
 class HistoryInline(admin.StackedInline):
-    """Selection to be added when adding an item"""
+    """History to be added when adding an item"""
     model = History
     extra = 1
     max_num = 1
@@ -33,76 +33,102 @@ class SelectionInline(admin.StackedInline):
 
 
 class ImageInline(admin.StackedInline):
-    """Selection to be added when adding an item"""
+    """Image to be added when adding a selection"""
     model = Image
     extra = 1
     max_num = 1
 
 
 class TextilecolourInline(admin.StackedInline):
-    """Selection to be added when adding an item"""
+    """Textile colour to be added when adding a textile"""
     model = Textilecolour
     extra = 1
     max_num = 1
 
 
 class TextileInline(admin.StackedInline):
-    """Selection to be added when adding an item"""
+    """Textile to be added when adding a selection"""
     model = Textile
     extra = 1
     max_num = 1
 
 
-class DescriptionInline(admin.StackedInline):
-    """Selection to be added when adding an item"""
+class TextileDescriptionInline(admin.StackedInline):
+    """Description to be added when adding a textile"""
     model = Description
     extra = 1
     max_num = 1
 
 
 class ThreadInline(admin.StackedInline):
-    """Selection to be added when adding an item"""
+    """Thread to be added when adding an textile"""
     model = Thread
     extra = 1
     max_num = 1
 
 
 class MicroscopyInline(admin.StackedInline):
-    """Selection to be added when adding an item"""
+    """Microscopy to be added when adding a thread"""
     model = Microscopy
     extra = 1
     max_num = 1
 
 
 class FibreInline(admin.StackedInline):
-    """Selection to be added when adding an item"""
+    """Fibre to be added when adding microscopy"""
     model = Fibre
     extra = 1
     max_num = 1
 
 
 class MspInline(admin.StackedInline):
-    """Selection to be added when adding an item"""
+    """Msp analysis to be added when adding a fibre"""
     model = Msp
     extra = 1
     max_num = 1
 
 
 class DyeAnalysisInline(admin.StackedInline):
-    """Selection to be added when adding an item"""
+    """Dye analysis to be added when adding a fibre"""
     model = DyeAnalysis
     extra = 1
     max_num = 1
 
-admin.site.register(Item)
+
+class ItemAdmin(admin.ModelAdmin):
+
+    inlines = [HistoryInline, SelectionInline]
+
+
+class SelectionAdmin(admin.ModelAdmin):
+
+    inlines = [ImageInline, TextileInline]
+
+
+class TextileAdmin(admin.ModelAdmin):
+
+    inlines = [TextilecolourInline, TextileDescriptionInline, ThreadInline]
+
+
+class ThreadAdmin(admin.ModelAdmin):
+
+    inlines = [MicroscopyInline, FibreInline]
+
+
+class FibreAdmin(admin.ModelAdmin):
+
+    inlines = [MspInline, DyeAnalysisInline]
+
+
+admin.site.register(Item, ItemAdmin)
 admin.site.register(History)
-admin.site.register(Selection)
+admin.site.register(Selection, SelectionAdmin)
 admin.site.register(Image)
 admin.site.register(Textilecolour)
-admin.site.register(Textile)
+admin.site.register(Textile, TextileAdmin)
 admin.site.register(Description)
-admin.site.register(Thread)
+admin.site.register(Thread, ThreadAdmin)
 admin.site.register(Microscopy)
-admin.site.register(Fibre)
+admin.site.register(Fibre, FibreAdmin)
 admin.site.register(Msp)
 admin.site.register(DyeAnalysis)
