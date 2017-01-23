@@ -21,7 +21,7 @@ admin.site.site_header = 'TraceBrace Administratie'
 class HistoryInline(admin.StackedInline):
     """History to be added when adding an item"""
     model = History
-    extra = 1
+    extra = 0
 
 
 class SelectionInline(admin.StackedInline):

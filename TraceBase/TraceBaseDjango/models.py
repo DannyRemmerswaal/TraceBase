@@ -384,7 +384,7 @@ class Thread(models.Model):
         verbose_name_plural = 'draden'
 
     def __str__(self):
-        return self.description + " , " + str(self.textile)
+        return "Draad : " + self.description + " , " + str(self.textile)
 
 
 class Microscopy(models.Model):
