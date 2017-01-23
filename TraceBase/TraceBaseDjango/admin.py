@@ -22,77 +22,65 @@ class HistoryInline(admin.StackedInline):
     """History to be added when adding an item"""
     model = History
     extra = 1
-    max_num = 1
 
 
 class SelectionInline(admin.StackedInline):
     """Selection to be added when adding an item"""
     model = Selection
     extra = 1
-    max_num = 1
 
 
 class ImageInline(admin.StackedInline):
     """Image to be added when adding a selection"""
     model = Image
     extra = 1
-    max_num = 1
 
 
 class TextilecolourInline(admin.StackedInline):
     """Textile colour to be added when adding a textile"""
     model = Textilecolour
     extra = 1
-    max_num = 1
 
 
 class TextileInline(admin.StackedInline):
     """Textile to be added when adding a selection"""
     model = Textile
     extra = 1
-    max_num = 1
 
 
 class TextileDescriptionInline(admin.StackedInline):
     """Description to be added when adding a textile"""
     model = Description
     extra = 1
-    max_num = 1
 
 
 class ThreadInline(admin.StackedInline):
     """Thread to be added when adding an textile"""
     model = Thread
     extra = 1
-    max_num = 1
 
 
 class MicroscopyInline(admin.StackedInline):
     """Microscopy to be added when adding a thread"""
     model = Microscopy
     extra = 1
-    max_num = 1
-
 
 class FibreInline(admin.StackedInline):
     """Fibre to be added when adding microscopy"""
     model = Fibre
     extra = 1
-    max_num = 1
 
 
 class MspInline(admin.StackedInline):
     """Msp analysis to be added when adding a fibre"""
     model = Msp
     extra = 1
-    max_num = 1
 
 
 class DyeAnalysisInline(admin.StackedInline):
     """Dye analysis to be added when adding a fibre"""
     model = DyeAnalysis
     extra = 1
-    max_num = 1
 
 
 class ItemAdmin(admin.ModelAdmin):

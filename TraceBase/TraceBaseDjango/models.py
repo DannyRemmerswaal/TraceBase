@@ -159,7 +159,7 @@ class Selection(models.Model):
         verbose_name_plural = 'selecties'
 
     def __str__(self):
-        return 'Object : ' + str(self.item) + ' ,  Beschrijving selectie : ' + self.description
+        return 'Object : ' + str(self.item.description) + ' ,  Beschrijving selectie : ' + self.description
 
 
 class Image(models.Model):
@@ -246,13 +246,13 @@ class Textile(models.Model):
         verbose_name_plural = 'textielen'
 
     def __str__(self):
-        return 'Naam Textiel :   ' + self.description + ' , Selectie :   ' + str(self.selection)
+        return 'Beschrijving Textiel :   ' + self.description + ' , Object en Selectie :   ' + str(self.selection)
 
 
 class Textilecolour(models.Model):
     description = models.CharField(max_length=30, blank=True, null=True)
     textile = models.ForeignKey(Textile,  on_delete=models.CASCADE, db_column='textile')
-    spectrum = models.TextField  # This field type is a guess.
+    spectrum = models.FloatField  # This field type is a guess.
 
     class Meta:
         managed = False
@@ -276,11 +276,11 @@ class Description(models.Model):
     class Meta:
         managed = False
         db_table = 'description'
-        verbose_name = 'textielbeschrijving'
-        verbose_name_plural = 'textielbeschrijvingen'
+        verbose_name = 'textiel beschrijving'
+        verbose_name_plural = 'textiel beschrijvingen'
 
     def __str__(self):
-        return 'Textiel :  ' + str(self.sample) + ' ,  Beschrijving : ' + self.description
+        return 'Textiel :  ' + str(self.sample) + ' ,  Beschrijving textiel : ' + self.description
 
 # Thread models
 
@@ -454,7 +454,7 @@ class Fibre(models.Model):
 
 class Msp(models.Model):
     fibre = models.ForeignKey(Fibre,  on_delete=models.CASCADE, db_column='fibre')
-    spectrum = models.TextField()  # This field type is a guess.
+    spectrum = models.FloatField()  # This field type is a guess.
 
     class Meta:
         managed = False
