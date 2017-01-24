@@ -81,7 +81,7 @@ class Subcategory(models.Model):
         verbose_name_plural = 'subcategorieen'
 
     def __str__(self):
-        return self.description + " , " +self.category.description
+        return self.description + " , " + self.category.description
 
 
 class Subsubcategory(models.Model):
@@ -96,7 +96,7 @@ class Subsubcategory(models.Model):
         verbose_name_plural = 'subsubcategorieen'
 
     def __str__(self):
-        return self.description + " , " + self.category.description + " , " + self.category.category.description
+        return self.category.category.description + " , " + self.category.description + " , " + self.description
 
 
 class Action(models.Model):
@@ -139,11 +139,11 @@ class History(models.Model):
     class Meta:
         managed = False
         db_table = 'history'
-        verbose_name = 'geschiedenis objecten'
+        verbose_name = 'geschiedenis object'
         verbose_name_plural = 'geschiedenis objecten'
 
     def __str__(self):
-        return self.description + " , " + self.item.description
+        return self.description + " , item :  " + self.item.description
 
 # Selection models
 
@@ -159,7 +159,7 @@ class Selection(models.Model):
         verbose_name_plural = 'selecties'
 
     def __str__(self):
-        return 'Object : ' + str(self.item.description) + ' ,  Beschrijving selectie : ' + self.description
+        return 'Object : ' + str(self.item.description) + ' ,  selectie : ' + self.description
 
 
 class Image(models.Model):
@@ -176,7 +176,7 @@ class Image(models.Model):
         verbose_name_plural = 'afbeeldingen selecties'
 
     def __str__(self):
-        return self.selection + ' ,  Beschrijving afbeelding : ' + self.description
+        return ' Selectie : ' + self.selection + ' ,  Beschrijving afbeelding : ' + self.description
 
 # Textile models
 
@@ -246,7 +246,7 @@ class Textile(models.Model):
         verbose_name_plural = 'textielen'
 
     def __str__(self):
-        return 'Beschrijving Textiel :   ' + self.description + ' , Object en Selectie :   ' + str(self.selection)
+        return 'Textiel :   ' + self.description + ' , bijbehorend item + selectie :   ' + str(self.selection)
 
 
 class Textilecolour(models.Model):
@@ -412,7 +412,7 @@ class Microscopy(models.Model):
         verbose_name_plural = 'microscopiemetingen draad'
 
     def __str__(self):
-        return 'Thread : ' + str(self.thread) + ' ,  ID meting : ' + str(self.id)
+        return 'Draad: ' + str(self.thread) + ' ,  ID meting : ' + str(self.id)
 
 # Fibre models
 

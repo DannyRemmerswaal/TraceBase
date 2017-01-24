@@ -108,6 +108,7 @@ class FibreAdmin(admin.ModelAdmin):
     inlines = [MspInline, DyeAnalysisInline]
 
 
+
 admin.site.register(Item, ItemAdmin)
 admin.site.register(History)
 admin.site.register(Selection, SelectionAdmin)
