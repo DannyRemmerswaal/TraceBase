@@ -10,6 +10,16 @@ from django.db import models
 
 # LUT models
 
+# Custom Floatfield to Real datatype PostgreSQL.
+
+
+class RealField(models.FloatField):
+
+    description = "A field with the Real datatype"
+
+    def db_type(self, connection):
+        return []
+
 
 class Colour(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -176,7 +186,7 @@ class Image(models.Model):
         verbose_name_plural = 'afbeeldingen selecties'
 
     def __str__(self):
-        return ' Selectie : ' + self.selection + ' ,  Beschrijving afbeelding : ' + self.description
+        return ' Selectie : ' + self.selection + ' ,  beschrijving afbeelding : ' + self.description
 
 # Textile models
 
@@ -252,7 +262,7 @@ class Textile(models.Model):
 class Textilecolour(models.Model):
     description = models.CharField(max_length=30, blank=True, null=True)
     textile = models.ForeignKey(Textile,  on_delete=models.CASCADE, db_column='textile')
-    spectrum = models.FloatField  # This field type is a guess.
+    spectrum = models.TextField("Volgens format {{x,y}, {x,y}}, bij herladen [] veranderen in {}.") # Moet verbeterd worden!
 
     class Meta:
         managed = False
@@ -261,7 +271,7 @@ class Textilecolour(models.Model):
         verbose_name_plural = 'textielkleuren'
 
     def __str__(self):
-        return self.description + ' ,  Textiel : ' + str(self.textile.description)
+        return self.description + ' ,  textiel : ' + str(self.textile.description)
 
 
 class Description(models.Model):
@@ -280,7 +290,7 @@ class Description(models.Model):
         verbose_name_plural = 'textiel beschrijvingen'
 
     def __str__(self):
-        return 'Textiel :  ' + str(self.sample) + ' ,  Beschrijving textiel : ' + self.description
+        return 'Textiel :  ' + str(self.sample) + ' ,  beschrijving textiel : ' + self.description
 
 # Thread models
 
@@ -374,7 +384,7 @@ class Thread(models.Model):
     application = models.ForeignKey(Application,  on_delete=models.PROTECT, db_column='application')
     thickness = models.FloatField()
     structure = models.ForeignKey(Structure,  on_delete=models.PROTECT, db_column='structure')
-    nfibres = models.ForeignKey(NumberOfFibres,  on_delete=models.PROTECT, db_column='nfibres')
+    numberOfFibres = models.ForeignKey(NumberOfFibres,  on_delete=models.PROTECT, db_column='nfibres')
     description = models.CharField(max_length=25, blank=True, null=True)
 
     class Meta:
@@ -435,7 +445,7 @@ class Dye(models.Model):
         verbose_name_plural = 'kleurstoffen vezel'
 
     def __str__(self):
-        return 'Applicatie : ' + self.application + ' ,  Kleur : ' + self.colour + ' ,  CI Nummer ' + str(self.ci_number)
+        return 'Applicatie : ' + self.application + ' ,  kleur : ' + self.colour + ' ,  CI nummer ' + str(self.ci_number)
 
 
 class Fibre(models.Model):
@@ -454,7 +464,7 @@ class Fibre(models.Model):
 
 class Msp(models.Model):
     fibre = models.ForeignKey(Fibre,  on_delete=models.CASCADE, db_column='fibre')
-    spectrum = models.FloatField()  # This field type is a guess.
+    spectrum = models.TextField("Volgens format {{x,y}, {x,y}}, bij herladen [] veranderen in {}.")  # Moet verbeterd worden!
 
     class Meta:
         managed = False
@@ -478,7 +488,7 @@ class DyeAnalysis(models.Model):
         verbose_name_plural = 'kleuranalyes vezel'
 
     def __str__(self):
-        return 'Vezel : ' + str(self.fibre) + ' ,  Kleurstof : ' + str(self.dye)
+        return 'Vezel : ' + str(self.fibre) + ' ,  kleurstof : ' + str(self.dye)
 
 
 

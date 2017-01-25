@@ -36,7 +36,7 @@ class ImageInline(admin.StackedInline):
     extra = 0
 
 
-class TextilecolourInline(admin.StackedInline):
+class TextileColourInline(admin.StackedInline):
     """Textile colour to be added when adding a textile"""
     model = Textilecolour
     extra = 0
@@ -95,7 +95,7 @@ class SelectionAdmin(admin.ModelAdmin):
 
 class TextileAdmin(admin.ModelAdmin):
 
-    inlines = [TextilecolourInline, TextileDescriptionInline, ThreadInline]
+    inlines = [TextileDescriptionInline, ThreadInline]
 
 
 class ThreadAdmin(admin.ModelAdmin):
@@ -105,8 +105,7 @@ class ThreadAdmin(admin.ModelAdmin):
 
 class FibreAdmin(admin.ModelAdmin):
 
-    inlines = [MspInline, DyeAnalysisInline]
-
+    inlines = [DyeAnalysisInline]
 
 
 admin.site.register(Item, ItemAdmin)
