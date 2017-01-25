@@ -1,0 +1,668 @@
+﻿-----------------------------------------------------------------------------
+-------------	    	 Schemas			                -----
+-----------------------------------------------------------------------------     
+                                                                                     
+CREATE SCHEMA Item;
+CREATE SCHEMA Selection;
+CREATE SCHEMA Textile;
+CREATE SCHEMA Thread;
+CREATE SCHEMA Fibre;
+CREATE SCHEMA Lut;
+CREATE SCHEMA Security;
+
+----------------------------------------------------------------------------------
+--	Linked User Table General	 (Linked to different tables)           --
+----------------------------------------------------------------------------------
+
+CREATE TABLE Lut.Colour(
+	id integer PRIMARY KEY,
+	description varchar(25) NOT NULL
+);
+COPY Lut.Colour FROM 'LU_Colours.csv' WITH DELIMITER ',';
+
+CREATE TABLE Lut.Colour_Intensity(
+	id integer PRIMARY KEY,
+	description varchar(25) NOT NULL
+);
+COPY Lut.Colour_Intensity FROM 'LU_Colour_Intensities.csv' WITH DELIMITER ',';
+
+-----------------------------------------------------------------------------
+----		          Items			             		-----
+-----------------------------------------------------------------------------
+
+--NB Lookuptabellen hebben wel een primaire sleutel, maar die is niet auto-increment. 
+
+CREATE TABLE Item.Action(
+	id integer PRIMARY KEY,
+	description varchar(25) NOT NULL
+	);
+COPY Item.Action FROM 'LU_Item_Actions.csv' ( FORMAT CSV, DELIMITER(',') );
+
+CREATE TABLE Item.Population(
+	id integer PRIMARY KEY,
+	description varchar(25) NOT NULL
+);
+COPY Item.Population FROM 'LU_Item_Populations.csv' ( FORMAT CSV, DELIMITER(',') );
+
+CREATE TABLE Item.Category(
+	id integer PRIMARY KEY,
+	description varchar(30) NOT NULL
+);
+COPY Item.Category FROM 'LU_Item_Classes_1.csv' ( FORMAT CSV, DELIMITER(',') );
+
+CREATE TABLE Item.Subcategory(
+	id integer PRIMARY KEY,
+	category integer references Item.Category NOT NULL,
+	description varchar(30) NOT NULL
+);
+COPY Item.Subcategory FROM 'LU_Item_Classes_2.csv' ( FORMAT CSV, DELIMITER(',') );
+
+CREATE TABLE Item.SubSubcategory (
+	id integer PRIMARY KEY,
+	category integer references Item.Subcategory NOT NULL,
+	description varchar(30) NOT NULL
+);
+COPY Item.SubSubCategory FROM 'LU_Item_Classes_3.csv' ( FORMAT CSV, DELIMITER(',') );
+
+
+-------------------------Material
+
+CREATE TABLE Item.Item (
+	id serial PRIMARY KEY,
+	description varchar(30) NOT NULL,
+	category integer references Item.SubSubCategory NOT NULL,
+	population integer references Item.Population NOT NULL
+);
+
+CREATE VIEW Item.Item$ AS 
+SELECT 	I.id as id, 
+	I.id::text ||': ' || I.description || ' (' || C1.description || '/' || C2.description || '/' || C3.description || ') ' || P.description as description
+FROM 	Item.Item I,Item.Category C1,Item.Subcategory C2, Item.SubSubCategory C3, Item.Population P
+WHERE 	I.class_3 = C3.id
+AND 	I.population = P.id 
+AND 	C2.id=C3.Class_2
+AND 	C1.id=C2.Class_1;
+
+
+
+-------------------Analysis
+
+CREATE TABLE Item.History(
+	id serial PRIMARY KEY, 
+	description varchar(30),                                 
+	action integer references Item.Action NOT NULL,
+	item integer references Item.Item NOT NULL,                              
+	party varchar(30) NOT NULL,
+	party_Reference varchar(30),
+	date date NOT NULL
+  	);
+
+
+-------------		VIEW for Item_History				---------
+
+CREATE VIEW Item.History$ AS 
+SELECT 	H.id as id, 
+	H.item as item, 
+	A.description || ' (' || H.party || '/' || H.date::text || ')' as description
+FROM Item.History H, Item.Action A
+WHERE H.action = A.id;
+
+-----------------------------------------------------------------------------
+-------------		Selections					-----
+-----------------------------------------------------------------------------
+
+CREATE TABLE Selection.Selection (
+	id serial PRIMARY KEY,
+	description varchar(30),
+	item integer references Item.Item NOT NULL
+);
+
+
+CREATE VIEW Selection.Selection$ AS
+SELECT 	S.id as id,
+	S.item as item,
+	S.description as description
+FROM Selection.Selection S;
+
+-------------	Trigger for new items, for every new item a selection Global is made   ---
+
+CREATE OR REPLACE FUNCTION item.Global_Row() 
+  RETURNS trigger AS
+$func$
+DECLARE
+        key          integer;
+BEGIN
+key=NEW.id;
+
+INSERT INTO Selection.Selection (item, description) VALUES (key,'global');
+RETURN new;
+END
+$func$
+LANGUAGE plpgsql VOLATILE;
+
+CREATE TRIGGER New_item
+    AFTER INSERT ON Item.item
+    FOR EACH ROW
+    EXECUTE PROCEDURE item.Global_Row();
+
+---------------------Analysis
+
+CREATE TABLE Selection.Image(
+	id serial PRIMARY KEY,
+	selection integer references Selection.Selection NOT NULL,
+	description varchar(40) NOT NULL,
+	fullname varchar(40), 	
+	name varchar(25),
+	img bytea NOT NULL
+);
+
+
+	
+CREATE VIEW Selection.Image$ AS
+SELECT	I.id as id,
+	I.selection as selection,
+	I.name || ' (' || I.description || ')' AS Description
+	FROM Selection.Image I;
+
+-----------------------------------------------------------------------------
+-------------		Textiles					-----
+-----------------------------------------------------------------------------
+
+CREATE TABLE Textile.Origin(
+	id integer PRIMARY KEY,
+	description varchar(25) NOT NULL
+	);
+COPY Textile.Origin FROM 'LU_Textile_Origins.csv' ( FORMAT CSV, DELIMITER(',') );
+
+
+CREATE TABLE Textile.Category(
+	id integer PRIMARY KEY,
+	description varchar(30) NOT NULL,
+	title_descr1 varchar(30),
+	title_descr2 varchar(30),
+	title_num1 varchar(30),
+	title_num2 varchar(30),
+	title_bool1 varchar(30),
+	title_bool2 varchar(30)
+);
+COPY Textile.Category FROM 'LU_Textile_Categories.csv' ( FORMAT CSV, DELIMITER(',') );
+
+CREATE TABLE Textile.Pattern(
+	id integer PRIMARY KEY,
+	category integer references Textile.Category NOT NULL,
+	description varchar(30) NOT NULL
+);
+COPY Textile.Pattern FROM 'LU_Textile_Patterns.csv' ( FORMAT CSV, DELIMITER(',') );
+
+
+-------------------Materials
+
+CREATE TABLE Textile.Textile (
+	id serial PRIMARY KEY,
+	description varchar(30) NOT NULL,
+	origin integer references Textile.Origin NOT NULL,
+	colour integer references Lut.Colour NOT NULL, 
+	colour_intensity integer references Lut.Colour_Intensity NOT NULL,
+	sampled boolean default TRUE NOT NULL,
+	category integer references Textile.Category NOT NULL,
+	selection integer references Selection.Selection NOT NULL
+);
+
+
+CREATE OR REPLACE VIEW textile.Sample$ as
+SELECT	T.id as id,
+	CI.description || '-' ||C.description || ' ' || Cat.description || ', ' || O.description as description
+FROM 	Textile.Textile T, Textile.Origin O,Lut.Colour_Intensity CI,
+	Lut.Colour C, Textile.Category Cat
+WHERE	T.origin = O.id
+AND	T.colour_intensity =   CI.id
+AND	T.colour = C.id
+AND	T.category = Cat.id;
+
+--------------Analysis
+
+CREATE TABLE  Textile.Colour(
+	id serial PRIMARY KEY,   
+	description varchar(30),
+	textile integer references Textile.Textile NOT NULL,                           
+  	spectrum real [] [] NOT NULL
+);
+
+
+CREATE TABLE  Textile.Description(
+	id  serial PRIMARY KEY,                  
+	sample integer references Textile.Textile NOT NULL,
+	pattern integer references Textile.Pattern NOT NULL,
+	description varchar(30),
+	num1 real,
+	num2 real,
+	bool1 boolean,
+	bool2 boolean
+	);
+
+CREATE OR REPLACE VIEW Textile.Description$ AS
+SELECT 	S.id as id, 
+	S.Description || ' (' || C.description || '/' || P.description || ')' AS description 
+FROM 	Textile.Description S, Textile.Pattern P, Textile.Category C
+WHERE	S.pattern = P.id
+AND	P.category = C.id;
+
+-----------------------------------------------------------------------------
+----		Threads  						-----
+-----------------------------------------------------------------------------
+
+CREATE TABLE Thread.Application(
+	id integer PRIMARY KEY,
+	description varchar(30) NOT NULL
+);
+COPY Thread.Application FROM 'LU_Thread_Applications.csv' ( FORMAT CSV, DELIMITER(',') );
+
+CREATE TABLE Thread.Structure(
+	id integer PRIMARY KEY,
+	description varchar(25) NOT NULL
+);
+COPY Thread.Structure FROM 'LU_Thread_Structure.csv' ( FORMAT CSV, DELIMITER(',') );
+
+CREATE TABLE Thread.Number_of_fibres(
+	id integer PRIMARY KEY,
+	description varchar(10) NOT NULL
+);
+COPY Thread.Number_of_fibres FROM 'LU_Thread_Number_of_Fibres.csv' ( FORMAT CSV, DELIMITER(',') );
+
+CREATE TABLE Thread.MicID(
+	id integer PRIMARY KEY,
+	description varchar(25) NOT NULL
+);
+COPY Thread.MicID FROM 'LU_Thread_MicID.csv' ( FORMAT CSV, DELIMITER(',') );
+
+CREATE TABLE Thread.MicPOL(
+	id integer PRIMARY KEY,
+	description varchar(25) NOT NULL
+);
+
+COPY Thread.MicPOL FROM 'LU_Thread_MicPol.csv' ( FORMAT CSV, DELIMITER(',') );
+
+CREATE TABLE Thread.MicDelust(
+	id integer PRIMARY KEY,
+	description varchar(25) NOT NULL
+);
+COPY Thread.MicDelust FROM 'LU_Thread_MicDelust.csv' ( FORMAT CSV, DELIMITER(',') );
+
+--------------------Material
+
+CREATE TABLE Thread.Thread (
+	id serial PRIMARY KEY,
+	textile integer references Textile.Textile NOT NULL,
+	application integer references Thread.Application NOT NULL,
+	thickness real NOT NULL,
+	structure integer references Thread.Structure NOT NULL,
+	nFibres integer references Thread.Number_of_fibres NOT NULL,
+	description varchar(25)
+);
+
+CREATE OR REPLACE VIEW  Thread.Thread$ AS 
+SELECT 	T.id as id,
+	T.description || '(' || A.description || '/' || S.description || '), #=' || N.description  || ', Ø=' || T.thickness::text ||'mm' as description
+FROM	Thread.Thread T,
+	Thread.Application A,
+	Thread.Structure S,
+	Thread.Number_of_fibres N
+WHERE 	A.id=T.application
+AND	S.id=T.structure
+AND	N.id=T.nFibres;
+
+
+--------------Analysis
+
+CREATE TABLE Thread.Microscopy(
+	id serial PRIMARY KEY,                                   
+	thread integer references Thread.Thread NOT NULL,
+	type varchar(40),
+	material integer references Thread.MicID NOT NULL,
+	percentage real NOT NULL,
+	colour1 integer references Lut.Colour NOT NULL,
+	colour2 integer references Lut.Colour NOT NULL,
+	colour_Intensity integer references Lut.Colour_Intensity NOT NULL,
+        delust integer references Thread.MicDelust NOT NULL,
+	pol integer references Thread.MicPOL NOT NULL,
+	fluA_Colour integer references Lut.Colour NOT NULL,
+	fluA_Intensity integer references Lut.Colour_Intensity NOT NULL,
+	fluD_Colour integer references Lut.Colour NOT NULL,
+	fluD_Intensity integer references Lut.Colour_Intensity NOT NULL,
+	fluN_Colour integer references Lut.Colour NOT NULL,
+	fluN_Intensity integer references Lut.Colour_Intensity NOT NULL,
+	rarity integer
+);
+
+	
+CREATE OR REPLACE VIEW  Thread.Microscopy$ AS 
+SELECT 	T.ID as id,
+	M.type || ': ' || CI.description || ' ' || C1.Description || '-' || C2.Description || ' ' || I.description || ' (' || T.id::text || ', ' || A.description || ')' as description,
+	T.Textile as sample
+FROM	Thread.Microscopy M full outer join Thread.Thread T ON T.id = M.thread,
+	Thread.Applications A,
+	Lut.Colour_intensity CI,
+	Lut.Colour C1,
+	Lut.Colour C2,
+	Thread.MicId I
+WHERE	A.id = T.application AND
+	CI.id = M.colour_intensity AND
+	C1.id = M.colour1 AND
+	C2.id = M.colour2 AND
+	I.id = M.material;
+
+
+-----------------------------------------------------------------------------
+----		Fibres  						-----
+-----------------------------------------------------------------------------
+
+CREATE TABLE Fibre.Dye(
+	id integer PRIMARY KEY,
+	application varchar(20) NOT NULL,
+	colour varchar(20) NOT NULL,
+	number integer NOT NULL,
+	ci_Name_add varchar(25),
+	ci_Number integer,
+	ci_Number_add varchar(25),
+	cas varchar(25),
+	remark varchar(25)
+);
+COPY Fibre.Dye FROM 'Dyes.csv' WITH DELIMITER ','  CSV HEADER;
+
+CREATE TABLE Fibre.Fibre (
+	id serial PRIMARY KEY,
+	thread_ID integer references Thread.Thread NOT NULL,
+	fibre_Type integer references Thread.Microscopy NOT NULL
+);
+
+CREATE VIEW Fibre.Fibre$  AS
+SELECT	F.id as id,
+	F.id::text || '(Type ' || M.id::text || ')' AS description
+FROM	Fibre.Fibre F,
+	Thread.Microscopy M;
+
+-----------------------------Analysis
+
+CREATE TABLE  Fibre.Dye_Analysis(
+	id serial PRIMARY KEY,                                   
+	fibre integer references Fibre.Fibre NOT NULL,
+	dye integer references Fibre.Dye NOT NULL,
+	Quantity real
+	);
+
+
+CREATE TABLE Fibre._MSP (
+	id serial PRIMARY KEY,            
+        fibre integer references Fibre.Fibre  NOT NULL,               
+	spectrum real [] []  NOT NULL	
+);
+
+
+-----------------------------------------------------------------------------
+-------------		       Security					-----
+-----------------------------------------------------------------------------
+
+CREATE TABLE Security.ChangeHistory(
+ 	id serial PRIMARY KEY,     
+        schema_name text NOT NULL,
+        table_name text NOT NULL,
+        currentuser varchar(10) default current_user,	
+	date timestamptz default current_timestamp,
+        action varchar(25) NOT NULL CHECK (action IN ('I', 'D', 'U')),
+	original_data text,
+        new_data text,
+        row_id int,
+        query text
+);
+
+--
+-- Complex trigger
+--
+
+CREATE OR REPLACE FUNCTION Security.if_modified_func() RETURNS TRIGGER AS $body$
+DECLARE
+    v_old_data TEXT;
+    v_new_data TEXT;
+    v_row_id INT;
+BEGIN
+
+    IF (TG_OP = 'UPDATE') THEN
+        v_old_data := ROW(OLD.*);
+        v_new_data := ROW(NEW.*);
+        v_row_id = NEW.ID;
+        INSERT INTO Security.ChangeHistory (schema_name,table_name,action,original_data,new_data,row_id,query) 
+        VALUES (TG_TABLE_SCHEMA::TEXT,TG_TABLE_NAME::TEXT,substring(TG_OP,1,1),v_old_data,v_new_data,v_row_id,current_query());
+        RETURN NEW;
+    ELSIF (TG_OP = 'DELETE') THEN
+        v_old_data := ROW(OLD.*);
+        v_row_id = OLD.ID;
+        INSERT INTO Security.ChangeHistory (schema_name,table_name,action,original_data,row_id,query)
+        VALUES (TG_TABLE_SCHEMA::TEXT,TG_TABLE_NAME::TEXT,substring(TG_OP,1,1),v_old_data,v_row_id, current_query());
+        RETURN OLD;
+    ELSIF (TG_OP = 'INSERT') THEN
+        v_new_data := ROW(NEW.*);
+        v_row_id = NEW.ID;
+        INSERT INTO Security.ChangeHistory (schema_name,table_name,action,new_data,row_id,query)
+        VALUES (TG_TABLE_SCHEMA::TEXT,TG_TABLE_NAME::TEXT, substring(TG_OP,1,1),v_new_data,v_row_id, current_query());
+        RETURN NEW;
+    ELSE
+        RAISE WARNING '[SECURITY.IF_MODIFIED_FUNC] - Other action occurred: %, at %',TG_OP,now();
+        RETURN NULL;
+    END IF;
+ 
+EXCEPTION
+    WHEN data_exception THEN
+        RAISE WARNING '[SECURITY.IF_MODIFIED_FUNC] - UDF ERROR [DATA EXCEPTION] - SQLSTATE: %, SQLERRM: %',SQLSTATE,SQLERRM;
+        RETURN NULL;
+    WHEN unique_violation THEN
+        RAISE WARNING '[SECURITY.IF_MODIFIED_FUNC] - UDF ERROR [UNIQUE] - SQLSTATE: %, SQLERRM: %',SQLSTATE,SQLERRM;
+        RETURN NULL;
+    WHEN OTHERS THEN
+        RAISE WARNING '[SECURITY.IF_MODIFIED_FUNC] - UDF ERROR [OTHER] - SQLSTATE: %, SQLERRM: %',SQLSTATE,SQLERRM;
+        RETURN NULL;
+END;
+$body$
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = pg_catalog, Security;
+
+
+CREATE TRIGGER Item_Log
+AFTER INSERT OR UPDATE OR DELETE ON Item.Item
+FOR EACH ROW EXECUTE PROCEDURE Security.if_modified_func();
+
+CREATE TRIGGER ItemHistory_Log
+AFTER INSERT OR UPDATE OR DELETE ON Item.History
+FOR EACH ROW EXECUTE PROCEDURE Security.if_modified_func();
+
+CREATE TRIGGER Selection_Log
+AFTER INSERT OR UPDATE OR DELETE ON Selection.Selection
+FOR EACH ROW EXECUTE PROCEDURE Security.if_modified_func();
+
+CREATE TRIGGER SelectionImage_Log
+AFTER INSERT OR UPDATE OR DELETE ON Selection.Image
+FOR EACH ROW EXECUTE PROCEDURE Security.if_modified_func();
+
+CREATE TRIGGER Textile_Log
+AFTER INSERT OR UPDATE OR DELETE ON Textile.Textile
+FOR EACH ROW EXECUTE PROCEDURE Security.if_modified_func();
+
+CREATE TRIGGER TextileDescription_Log
+AFTER INSERT OR UPDATE OR DELETE ON Textile.Description
+FOR EACH ROW EXECUTE PROCEDURE Security.if_modified_func();
+
+CREATE TRIGGER TextileColour_Log
+AFTER INSERT OR UPDATE OR DELETE ON Textile.Colour
+FOR EACH ROW EXECUTE PROCEDURE Security.if_modified_func();
+
+CREATE TRIGGER Thread_Log
+AFTER INSERT OR UPDATE OR DELETE ON Thread.Thread
+FOR EACH ROW EXECUTE PROCEDURE Security.if_modified_func();
+
+CREATE TRIGGER ThreadMicroscopy_Log
+AFTER INSERT OR UPDATE OR DELETE ON Thread.Microscopy
+FOR EACH ROW EXECUTE PROCEDURE Security.if_modified_func();
+
+CREATE TRIGGER Fibre_Log
+AFTER INSERT OR UPDATE OR DELETE ON Fibre.Fibre
+FOR EACH ROW EXECUTE PROCEDURE Security.if_modified_func();
+
+CREATE TRIGGER FibreAnalysis_Log
+AFTER INSERT OR UPDATE OR DELETE ON Fibre.Dye_Analysis
+FOR EACH ROW EXECUTE PROCEDURE Security.if_modified_func();
+
+CREATE TRIGGER Fibre_MSP_Log
+AFTER INSERT OR UPDATE OR DELETE ON Fibre._MSP
+FOR EACH ROW EXECUTE PROCEDURE Security.if_modified_func();
+
+
+-----------------------------------------------------------------------------
+-------------		 User and roles			         	-----
+-----------------------------------------------------------------------------
+
+-- USERS AND ROLES. Dit is best lastig in postgres. Je kunt niet zomaal een rol weggooien 
+-- als deze nog rechten heeft. Je kunt de rechten van deze rol wel weghalen, met 'DROP OWNED BY'
+-- maar dat werkt alleen op de huidige DB. Rechten in ander DBs blijven gewoon behouden.
+-- Onderstaande code kan daarom foutmeldingen geven. Dat gebeurt als 'analyse' in meerdere DBs rechten 
+-- heeft. Ook wanneer deze foutmeldingen komen, geldt dat alle rechten in de huidige
+-- DB  opnieuw aan 'analyse' worden toegekend. Mag daarmee eigenlijk niet tot problemen leiden.
+
+DROP OWNED BY "analyse";
+DROP ROLE "analyse";
+DROP ROLE "cauxe";
+DROP ROLE "cevoo";
+DROP ROLE "jawee";
+DROP ROLE "liale";
+DROP ROLE "nirod";
+DROP ROLE "rasam";
+DROP ROLE "zizan";
+
+
+CREATE ROLE "analyse"
+ NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
+
+GRANT USAGE ON SCHEMA Item TO GROUP "analyse";
+GRANT USAGE ON SCHEMA Selection TO GROUP "analyse";
+GRANT USAGE ON SCHEMA Textile TO GROUP "analyse";
+GRANT USAGE ON SCHEMA Thread TO GROUP "analyse";
+GRANT USAGE ON SCHEMA Fibre TO GROUP "analyse";
+GRANT USAGE ON SCHEMA Lut TO GROUP "analyse";
+GRANT USAGE ON SCHEMA Security TO GROUP "analyse";
+
+---------------------------------------------
+------                  Item            -----
+---------------------------------------------
+
+GRANT ALL ON SEQUENCE Item.History_id_seq TO GROUP "analyse";
+GRANT ALL ON SEQUENCE Item.Items_id_seq TO GROUP "analyse";
+GRANT SELECT ON TABLE Item.Actions TO GROUP "analyse";
+GRANT SELECT ON TABLE Item.Category TO GROUP "analyse";
+GRANT SELECT ON TABLE Item.Subcategory TO GROUP "analyse";
+GRANT SELECT ON TABLE Item.SubSubCategory TO GROUP "analyse";
+GRANT ALL ON TABLE Item.History TO GROUP "analyse";
+GRANT ALL ON TABLE Item.Item TO GROUP "analyse";
+GRANT SELECT ON TABLE Item.Population TO GROUP "analyse";
+GRANT EXECUTE ON FUNCTION Item.global_row() TO GROUP "analyse";
+GRANT ALL ON Item."history$" TO GROUP "analyse";
+GRANT ALL ON Item."item$" TO GROUP "analyse";
+
+
+---------------------------------------------
+------                  Selection       -----
+---------------------------------------------
+
+GRANT ALL ON SEQUENCE Selection.Image_id_seq TO GROUP "analyse";
+GRANT ALL ON SEQUENCE Selection.Selection_id_seq TO GROUP "analyse";
+GRANT ALL ON TABLE Selection.Image TO GROUP "analyse";
+GRANT ALL ON TABLE Selection.Selection TO GROUP "analyse";
+GRANT ALL ON TABLE Selection."image$" TO GROUP "analyse";
+GRANT ALL ON TABLE Selection."selection$" TO GROUP "analyse";
+
+---------------------------------------------
+------                  Textile         -----
+---------------------------------------------
+
+GRANT ALL ON SEQUENCE Textile.Colour_id_seq TO GROUP "analyse";
+GRANT ALL ON SEQUENCE Textile.Textile_id_seq TO GROUP "analyse";
+GRANT SELECT ON TABLE Textile.Category TO GROUP "analyse";
+GRANT SELECT ON TABLE Textile.Colour TO GROUP "analyse";
+GRANT ALL ON TABLE Textile.Description TO GROUP "analyse";
+GRANT SELECT ON TABLE Textile.Origin TO GROUP "analyse";
+GRANT SELECT ON TABLE Textile.Pattern TO GROUP "analyse";
+GRANT ALL ON TABLE Textile.Textile TO GROUP "analyse";
+GRANT ALL ON TABLE Textile."description$" TO GROUP "analyse";
+GRANT ALL ON TABLE Textile."sample$" TO GROUP "analyse";
+
+---------------------------------------------
+------                  Thread	        -----
+---------------------------------------------
+
+GRANT ALL ON SEQUENCE Thread.Thread_id_seq TO GROUP "analyse";
+GRANT SELECT ON TABLE Thread.Application TO GROUP "analyse";
+GRANT SELECT ON TABLE Thread.Micdelust TO GROUP "analyse";
+GRANT SELECT ON TABLE Thread.Micid TO GROUP "analyse";
+GRANT SELECT ON TABLE Thread.Micpol TO GROUP "analyse";
+GRANT SELECT ON TABLE Thread.Number_of_fibres TO GROUP "analyse";
+GRANT SELECT ON TABLE Thread.Structure TO GROUP "analyse";
+GRANT ALL ON TABLE Thread.Thread TO GROUP "analyse";
+GRANT ALL ON TABLE Thread.Microscopy TO GROUP "analyse";
+
+---------------------------------------------
+------                  Fibre           -----
+---------------------------------------------
+
+GRANT ALL ON SEQUENCE Fibre.Dye_analysis_id_seq TO GROUP "analyse";
+GRANT ALL ON SEQUENCE Fibre.Fibres_id_seq TO GROUP "analyse";
+GRANT ALL ON TABLE Fibre.Dye_analysis TO GROUP "analyse";
+GRANT SELECT ON TABLE Fibre.Dye TO GROUP "analyse";
+GRANT ALL ON TABLE Fibre.Fibre TO GROUP "analyse";
+GRANT ALL ON TABLE Fibre."fibre$" TO GROUP "analyse";
+
+---------------------------------------------
+------                  Lut             -----
+---------------------------------------------
+
+GRANT SELECT ON TABLE Lut.Colour_intensity TO GROUP "analyse";
+GRANT SELECT ON TABLE Lut.Colour TO GROUP "analyse";
+
+
+-----------------------------------------------------------------------------
+-------------		       Security					-----
+-----------------------------------------------------------------------------
+
+GRANT SELECT ON TABLE Security.TableHistory TO GROUP "analyse";
+GRANT EXECUTE ON FUNCTION Security.if_modified_func()TO GROUP "analyse";
+
+---------------------------------------------
+------              Create Login        -----
+---------------------------------------------
+
+CREATE ROLE cauxe LOGIN
+  ENCRYPTED PASSWORD 'md5084fc0b36d1fd9f0f1d5de61719ed4b0'
+  NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
+
+CREATE ROLE cevoo LOGIN
+  ENCRYPTED PASSWORD 'md5bcbfc878c844c9b57bcb089a3e1b605f'
+  NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
+
+CREATE ROLE jawee LOGIN
+  ENCRYPTED PASSWORD 'md5e51d1c134ba8315ca3a95c46feb1920c'
+  NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
+
+CREATE ROLE liale LOGIN
+  ENCRYPTED PASSWORD 'md51649f609df5cbe8a382984aa3f8538a1'
+  NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
+
+CREATE ROLE nirod LOGIN
+  ENCRYPTED PASSWORD 'md554a884a9a1046da6e9368e19a629407d'
+  NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
+
+CREATE ROLE rasam LOGIN
+  ENCRYPTED PASSWORD 'md56cebdbdf2c07c52b7977971a1f9ff566'
+  NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
+
+CREATE ROLE zizan LOGIN
+  ENCRYPTED PASSWORD 'md5d9adf6220ca782e4dbca1be59257e354'
+  NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION;
+
+GRANT "analyse" TO cauxe, cevoo, jawee, liale, nirod, rasam, zizan;
